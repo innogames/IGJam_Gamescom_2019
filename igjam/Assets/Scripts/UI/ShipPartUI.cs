@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro.EditorUtilities;
+using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
@@ -9,13 +10,15 @@ public class ShipPartUI : SelectableControl
 	private SpriteRenderer _connectedButton;
 	private SignalBus _signalBus;
 	private GameModel _gameModel;
+	private DiContainer _container;
 
 	[Inject]
-	void Init(SignalBus signalBus, GameModel model)
+	void Init(SignalBus signalBus, GameModel model, DiContainer container)
 	{
 		_signalBus = signalBus;
 		_connectedButton = GetComponent<SpriteRenderer>();
 		_gameModel = model;
+		_container = container;
 	}
 
 	public override void Select()
@@ -36,6 +39,6 @@ public class ShipPartUI : SelectableControl
 
 	public ShipPart GetObject()
 	{
-		return Object.Instantiate(PrefabToInstantiate);
+		return _container.InstantiatePrefabForComponent<ShipPart>(PrefabToInstantiate);
 	}
 }
