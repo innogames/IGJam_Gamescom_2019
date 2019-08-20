@@ -443,6 +443,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameModeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1612566785958499997, guid: 15f961bf166ee4f199d73126cca03378,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1612566785958499969, guid: 15f961bf166ee4f199d73126cca03378,
         type: 3}
       propertyPath: m_LocalPosition.x
