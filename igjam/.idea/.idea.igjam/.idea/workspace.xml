@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6148f29b-fa85-4d8e-b8a3-a2f396b67098" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ShipPart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ShipPart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Thruster.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Thruster.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,12 +22,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="74" />
+          <entry key="cs" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="74" />
+          <entry key="C#" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -45,11 +44,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="102">
+              <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+              <folding>
+                <marker date="1566296268609" expanded="false" signature="6:78" ph="..." />
+                <marker date="1566296268609" expanded="true" signature="113:264" ph="{...}" />
+                <marker date="1566296268609" expanded="true" signature="216:222" ph="{...}" />
+                <marker date="1566296268609" expanded="true" signature="256:262" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,15 +64,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+              <folding>
+                <marker date="1566295953395" expanded="true" signature="29:71" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/ShipPart.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+            <state relative-caret-position="272">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="18" />
               <folding>
                 <marker date="1566296141165" expanded="false" signature="6:78" ph="..." />
                 <marker date="1566296141165" expanded="true" signature="132:954" ph="{...}" />
@@ -93,9 +101,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Ship/IShipControl.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ShipPart.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs" />
       </list>
     </option>
   </component>
@@ -169,12 +177,12 @@
       <option name="presentableId" value="Default" />
       <updated>1566295532515</updated>
       <workItem from="1566295534308" duration="89000" />
-      <workItem from="1566295690934" duration="415000" />
+      <workItem from="1566295690934" duration="522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="504000" />
+    <option name="totallyTimeSpent" value="611000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -233,24 +241,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ship/IShipControl.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/ShipPart.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="19" lean-forward="true" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+        <state relative-caret-position="272">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="18" />
           <folding>
             <marker date="1566296141165" expanded="false" signature="6:78" ph="..." />
             <marker date="1566296141165" expanded="true" signature="132:954" ph="{...}" />
@@ -258,6 +252,29 @@
             <marker date="1566296141165" expanded="true" signature="538:756" ph="{...}" />
             <marker date="1566296141165" expanded="true" signature="850:883" ph="{...}" />
             <marker date="1566296141165" expanded="true" signature="913:952" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ship/IShipControl.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding>
+            <marker date="1566295953395" expanded="true" signature="29:71" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Ship/Ship.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
+          <folding>
+            <marker date="1566296268609" expanded="false" signature="6:78" ph="..." />
+            <marker date="1566296268609" expanded="true" signature="113:264" ph="{...}" />
+            <marker date="1566296268609" expanded="true" signature="216:222" ph="{...}" />
+            <marker date="1566296268609" expanded="true" signature="256:262" ph="{...}" />
           </folding>
         </state>
       </provider>

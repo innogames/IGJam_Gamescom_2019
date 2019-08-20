@@ -6,7 +6,7 @@ public class Ship : MonoBehaviour
 {
 	private IShipControl _activeShipControl;
 
-	public void AddControl(IShipControl control)
+	public void AddControl(IShipControl control, int slotId)
 	{
 	}
 
