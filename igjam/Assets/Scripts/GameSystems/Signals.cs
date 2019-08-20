@@ -183,6 +183,18 @@ public class SystemSignal
 				SlotId = slotId;
 			}
 		}
+
+		public class ControlUpdated
+		{
+			public readonly int SlotId;
+			public readonly string NewControlName;
+
+			public ControlUpdated(int slotId, string newControlName)
+			{
+				SlotId = slotId;
+				NewControlName = newControlName;
+			}
+		}
 	}
 
 	public class GameMode

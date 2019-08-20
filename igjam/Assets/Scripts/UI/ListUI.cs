@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class ListUI : MonoBehaviour
 {
-	protected int _currentSlotId;
+	public int CurrentSlotId { get; protected set; }
 	public SelectableControl[] Slots;
 
 	protected virtual void DeactivateCurrentElement()
 	{
-		Slots[_currentSlotId].Deselect();
+		Slots[CurrentSlotId].Deselect();
 	}
 
 	protected virtual void SelectCurrentElement()
 	{
-		Slots[_currentSlotId].Select();
+		Slots[CurrentSlotId].Select();
 	}
 
 	public void SelectPreviousSlot()
 	{
 		DeactivateCurrentElement();
 
-		_currentSlotId--;
-		if(_currentSlotId < 0)
+		CurrentSlotId--;
+		if(CurrentSlotId < 0)
 		{
-			_currentSlotId = Slots.Length-1;
+			CurrentSlotId = Slots.Length-1;
 		}
 		SelectCurrentElement();
 	}
@@ -32,17 +32,17 @@ public class ListUI : MonoBehaviour
 	public void SelectNextSlot()
 	{
 		DeactivateCurrentElement();
-		_currentSlotId++;
-		if(_currentSlotId >= Slots.Length)
+		CurrentSlotId++;
+		if(CurrentSlotId >= Slots.Length)
 		{
-			_currentSlotId = 0;
+			CurrentSlotId = 0;
 		}
 		SelectCurrentElement();
 	}
 
 	public void ActivateSelectedSlot()
 	{
-		Slots[_currentSlotId].Activate();
+		Slots[CurrentSlotId].Activate();
 	}
 
 	public void Deactivate()

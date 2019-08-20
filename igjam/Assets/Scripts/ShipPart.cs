@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 using Zenject;
 
 public class ShipPart : MonoBehaviour, IShipControl
@@ -123,5 +124,21 @@ public class ShipPart : MonoBehaviour, IShipControl
 		ROT = Mathf.LerpAngle(ROT, fixture.transform.eulerAngles.z, .35f);
 		SCALE = Vector2.Lerp(SCALE, scale, .35f);
 		selected = false;
+	}
+
+	public void AssignButton(string newControlName)
+	{
+		
+		button = newControlName;
+		var view = gameObject.GetComponent<SpriteRenderer>();
+		if (button == "A" && view != null)
+		{
+			view.color = Color.red;
+		}
+		
+		if (button == "B" && view != null)
+		{
+			view.color = Color.green;
+		}
 	}
 }

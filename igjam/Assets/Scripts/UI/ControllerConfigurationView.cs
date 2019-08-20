@@ -4,30 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class ShipConfigurationView : MonoBehaviour
+public class ControllerConfigurationView : MonoBehaviour
 {
 	private enum ConfigurationState
 	{
 		SelectControlSlot, 
-		SelectItem
+		SelectButton
 	}
 
 	public ListUI ShipControls;
-	public ListUI AvailableShipParts;
 
 	private ConfigurationState _state;
-	private ListUI _activeListView;
 	private SignalBus _signalBus;
 
 	[Inject]
 	void Init(SignalBus signalBus)
 	{
 		_signalBus = signalBus;
-		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
-		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
+		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureControls.Activate>(ActivateUI);
+		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureControls.Deactivate>(DeactivateUI);
 		ActivateShipSlots();
 		DeactivateUI();
-		
 	}
 
 	private void DeactivateUI()
@@ -43,25 +40,30 @@ public class ShipConfigurationView : MonoBehaviour
 
 	void Update()
 	{
-		if (_activeListView == null)
-		{
-			return;
-		}
-
-		 
 		if (Input.GetButtonUp("A"))
 		{
-			_activeListView.SelectNextSlot();
-		}
-		if (Input.GetButtonUp("B"))
-		{
-			_activeListView.ActivateSelectedSlot();
 			switch (_state)
 			{
 				case ConfigurationState.SelectControlSlot:
-					ActivatePartSelection();
+					ShipControls.SelectNextSlot();
 					break; 
-				case ConfigurationState.SelectItem:
+				case ConfigurationState.SelectButton:
+					_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "A"));
+					ActivateShipSlots();
+					break;
+			}
+			
+		}
+		if (Input.GetButtonUp("B"))
+		{
+			ShipControls.ActivateSelectedSlot();
+			switch (_state)
+			{
+				case ConfigurationState.SelectControlSlot:
+					ActivateControlSelection();
+					break; 
+				case ConfigurationState.SelectButton:
+					_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "B"));
 					ActivateShipSlots();
 					break;
 			}
@@ -69,27 +71,15 @@ public class ShipConfigurationView : MonoBehaviour
 		}
 	}
 
-	private void ActivatePartSelection()
+	private void ActivateControlSelection()
 	{
-		if (_activeListView!=null)
-		{
-			_activeListView.Deactivate();
-		}
-		_state = ConfigurationState.SelectItem;
-		_activeListView = AvailableShipParts;
-		_activeListView.Activate();
+		ShipControls.Deactivate();
+		_state = ConfigurationState.SelectButton;
 	}
 
 	private void ActivateShipSlots()
 	{
-		if (_activeListView!=null)
-		{
-			_activeListView.Deactivate();
-		}
-		
 		_state = ConfigurationState.SelectControlSlot;
-		_activeListView = ShipControls;
-		_activeListView.Activate();
-		
+		ShipControls.Activate();
 	}
 }

@@ -551,6 +551,7 @@
           <e p="Thruster.cs" t="Include" />
           <e p="Uhh.cs" t="Include" />
           <e p="UI" t="Include">
+            <e p="ControllerConfigurationView.cs" t="Include" />
             <e p="ListUI.cs" t="Include" />
             <e p="SelectableControl.cs" t="Include" />
             <e p="ShipConfigurationView.cs" t="Include" />

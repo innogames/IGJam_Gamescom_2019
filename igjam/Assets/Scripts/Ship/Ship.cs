@@ -10,7 +10,6 @@ public class Ship : MonoBehaviour
 	[HideInInspector()] public List<PartFixture> partFixtures = new List<PartFixture>();
 
 	// already to the ship
-	public List<ShipPart> parts = new List<ShipPart>();
 	private SignalBus _signalBus;
 
 	[Inject]
@@ -30,16 +29,22 @@ public class Ship : MonoBehaviour
 
 		_signalBus = signalBus;
 		_signalBus.Subscribe<SystemSignal.Ship.PartAttached>(AttachNewPart);
+		_signalBus.Subscribe<SystemSignal.Ship.ControlUpdated>(UpdateSlotControl);
+		
+	}
+
+	private void UpdateSlotControl(SystemSignal.Ship.ControlUpdated signal)
+	{
+		var part = partFixtures[signal.SlotId].part;
+		if (part != null)
+		{
+			part.AssignButton(signal.NewControlName);	
+		} 
 	}
 
 	private void AttachNewPart(SystemSignal.Ship.PartAttached signal)
 	{
 		AddControl(signal.NewPart, signal.SlotId);
-	}
-
-	void Update()
-	{
-		HandleParts();
 	}
 
 	public void AddControl(ShipPart part, int slotId)
@@ -69,19 +74,5 @@ public class Ship : MonoBehaviour
 
 	public void SelectNextControl()
 	{
-	}
-
-	void HandleParts()
-	{
-		// roll thtorugh list and update their position and rotation and such 
-		int i = 0;
-		foreach (ShipPart part in parts)
-		{
-			// if (currentpart == i) {
-			//     part.Activate ();
-			// } else part.Deactivate ();
-			// part.TalkWithShip (this);
-			// i++;
-		}
 	}
 }
