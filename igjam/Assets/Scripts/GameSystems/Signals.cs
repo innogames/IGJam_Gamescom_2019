@@ -185,6 +185,47 @@ public class SystemSignal
 		}
 	}
 
+	public class GameMode
+	{
+		public class FlyMode
+		{
+			public class Activate
+			{
+			}
+
+			public class Deactivate
+			{
+			}
+
+		}
+		
+		public class ConfigureShip
+		{
+			public class Activate
+			{
+			}
+
+			public class Deactivate
+			{
+			}
+
+		}
+		
+		public class ConfigureControls
+		{
+			public class Activate
+			{
+			}
+
+			public class Deactivate
+			{
+			}
+
+		}
+		
+		
+	}
+
 
 }
 

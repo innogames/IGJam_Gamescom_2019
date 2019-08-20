@@ -525,6 +525,12 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="ControlTesting.cs" t="Include" />
+          <e p="GameMode" t="Include">
+            <e p="ConfigureControlsState.cs" t="Include" />
+            <e p="ConfigureShipState.cs" t="Include" />
+            <e p="FlyState.cs" t="Include" />
+            <e p="GameModeController.cs" t="Include" />
+          </e>
           <e p="GameSystems" t="Include">
             <e p="GameModel.cs" t="Include" />
             <e p="Signals.cs" t="Include" />

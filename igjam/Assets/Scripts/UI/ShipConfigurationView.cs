@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class ShipConfigurationView : MonoBehaviour
 {
@@ -15,10 +16,27 @@ public class ShipConfigurationView : MonoBehaviour
 	public ListUI AvailableShipParts;
 
 	private ConfigurationState _state;
-	private ListUI _activeListView; 
-	
-	void Start()
+	private ListUI _activeListView;
+	private SignalBus _signalBus;
+
+	[Inject]
+	void Init(SignalBus signalBus)
 	{
+		_signalBus = signalBus;
+		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
+		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
+		DeactivateUI();
+		
+	}
+
+	private void DeactivateUI()
+	{
+		this.enabled = false;
+	}
+
+	private void ActivateUI()
+	{
+		this.enabled = true;
 		ActivateShipSlots();
 	}
 
