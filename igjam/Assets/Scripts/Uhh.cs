@@ -6,24 +6,23 @@ using UnityEngine.SceneManagement;
 public class Uhh : MonoBehaviour {
 
     // INPUT STUFF 
-    public static Vector2 InputDirection ( ) {
+    public static Vector2 InputDirection () {
         Vector2 v = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical"));
         if (v.magnitude > 1f) v = v.normalized;
         return v;
     }
-    public static Vector2 MousePosition ( ) { return Camera.main.ScreenToWorldPoint (Input.mousePosition); }
-    public static void ClearInput ( ) {
-        for (int i = 0; i < 5; i++) {
-            Rewired.Player p = Rewired.ReInput.players.GetPlayer (i);
-            p.ClearInputEventDelegates ( );
-
-        }
-    }
+    public static Vector2 MousePosition () { return Camera.main.ScreenToWorldPoint (Input.mousePosition); }
+    // public static void ClearInput ( ) {
+    //     for (int i = 0; i < 5; i++) {
+    //         Rewired.Player p = Rewired.ReInput.players.GetPlayer (i);
+    //         p.ClearInputEventDelegates ( );
+    //     }
+    // }
 
     // COLOR SHIT  
     public static float ColorIntensity (Color c) { return c.r * .299f + c.g * 0.587f + c.b * 0.114f; }
     public static Color Invert (Color c) { return new Color (1f - c.r, 1f - c.g, 1f - c.b); }
-    public static Color BackgroundColor ( ) { return Camera.main.backgroundColor; }
+    public static Color BackgroundColor () { return Camera.main.backgroundColor; }
     public static Color RandomColor (float saturation = 0.7f) {
         Color c = Color.HSVToRGB (Random.Range (0f, 1f), saturation, 1f);
         c *= 1.5f - ColorIntensity (c);
@@ -32,8 +31,8 @@ public class Uhh : MonoBehaviour {
     }
 
     // MATH SHIT 
-    public static int RandomLookdir ( ) { if (Uhh.Chance (50f)) return 1; return -1; }
-    public static float RandomSine ( ) { return -10000f + Random.Range (0f, 360f); }
+    public static int RandomLookdir () { if (Uhh.Chance (50f)) return 1; return -1; }
+    public static float RandomSine () { return -10000f + Random.Range (0f, 360f); }
     public static float AngleFromVector (Vector2 dir) { return (Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg + 270f) % 360f; }
     public static Vector2 VectorFromAngle (float ang) { ang += 90f; ang = ang % 360f; ang *= Mathf.Deg2Rad; return new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang)); }
     public static Vector2 RotationFrom (Transform t) { float ang = t.eulerAngles.z; ang += 90f; ang *= Mathf.Deg2Rad; return new Vector2 (Mathf.Cos (ang), Mathf.Sin (ang)); }
@@ -44,7 +43,7 @@ public class Uhh : MonoBehaviour {
     public static Vector2 Mirror (Vector2 dir, Vector2 norm) { return Vector2.Reflect (dir, norm); }
     public static Vector2 Perp (Vector2 v) { return new Vector2 (-v.y, v.x); }
     public static Vector2 SineVector (float t) { return new Vector2 (Mathf.Sin (t), Mathf.Cos (t)); }
-    public static Vector2 RandomDirection ( ) {
+    public static Vector2 RandomDirection () {
         int r = Random.Range (0, 4);
         if (r == 0) return Vector2.right;
         if (r == 1) return Vector2.up;
@@ -78,7 +77,7 @@ public class Uhh : MonoBehaviour {
     }
 
     public static List<int> RandomNumbersBetween (int n, int min, int max) {
-        List<int> nums = new List<int> ( );
+        List<int> nums = new List<int> ();
         for (int i = min; i < max; i++) {
             nums.Add (i);
         }
@@ -89,7 +88,7 @@ public class Uhh : MonoBehaviour {
         return nums;
     }
 
-    public static Vector2 LongestVector (params Vector2[ ] vectors) {
+    public static Vector2 LongestVector (params Vector2[] vectors) {
         Vector2 v = Vector2.zero;
         float mag = 0;
         for (int i = 0; i < vectors.Length; i++) {
@@ -103,7 +102,7 @@ public class Uhh : MonoBehaviour {
     }
 
     // CAMERA SHIT 
-    public static float ScreenRatio ( ) { return (float) Screen.width / (float) Screen.height; }
+    public static float ScreenRatio () { return (float) Screen.width / (float) Screen.height; }
     public static bool Onscreen (Vector2 pos, float radius = 0) { return !Offscreen (pos, radius); }
     public static bool Offscreen (Vector2 pos, float radius = 0) {
         Vector2 campos = Camera.main.transform.position;
@@ -130,7 +129,7 @@ public class Uhh : MonoBehaviour {
 
         if (d.sqrMagnitude > 0) {
             float screenratioY = Camera.main.orthographicSize * 2f;
-            float screenratioX = screenratioY * ScreenRatio ( );
+            float screenratioX = screenratioY * ScreenRatio ();
             d.x *= screenratioX;
             d.y *= screenratioY;
         }
@@ -143,26 +142,26 @@ public class Uhh : MonoBehaviour {
         float r = (float) Screen.width / (float) Screen.height;
         return campos + new Vector2 (o * r * x, o * y);
     }
-    public static Vector2 ScreenTopLeft ( ) { return ScreenPos (-1, 1); }
-    public static Vector2 ScreenTopRight ( ) { return ScreenPos (1, 1); }
-    public static Vector2 ScreenBottomLeft ( ) { return ScreenPos (-1, -1); }
-    public static Vector2 ScreenBottomRight ( ) { return ScreenPos (1, -1); }
+    public static Vector2 ScreenTopLeft () { return ScreenPos (-1, 1); }
+    public static Vector2 ScreenTopRight () { return ScreenPos (1, 1); }
+    public static Vector2 ScreenBottomLeft () { return ScreenPos (-1, -1); }
+    public static Vector2 ScreenBottomRight () { return ScreenPos (1, -1); }
 
     // OTHER SHIT 
-    public static void ReloadLevel ( ) {
-        LoadLevel (SceneManager.GetActiveScene ( ).name);
+    public static void ReloadLevel () {
+        LoadLevel (SceneManager.GetActiveScene ().name);
     }
-    public static void LoadLevel (LevelSettings level) {
-        foreach (Player p in FindObjectsOfType<Player> ( )) {
-            God.Kill (p);
-        }
-        LevelScriptBase.difficulty = level.difficulty;
-        SceneManager.LoadScene (level.name);
-    }
+    // public static void LoadLevel (LevelSettings level) {
+    //     foreach (Player p in FindObjectsOfType<Player> ( )) {
+    //         God.Kill (p);
+    //     }
+    //     LevelScriptBase.difficulty = level.difficulty;
+    //     SceneManager.LoadScene (level.name);
+    // }
     public static void LoadLevel (string name) {
-        foreach (Player p in FindObjectsOfType<Player> ( )) {
-            God.Kill (p);
-        }
+        // foreach (Player p in FindObjectsOfType<Player> ( )) {
+        //     God.Kill (p);
+        // }
         SceneManager.LoadScene (name);
     }
     public static bool IsLetter (char c) {
