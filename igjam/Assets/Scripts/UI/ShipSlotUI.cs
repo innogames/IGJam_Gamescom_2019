@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 
 [RequireComponent(typeof(Button))]
 public class ShipSlotUI :  SelectableControl
 {
+	public int SlotId;
 	private Button _connectedButton;
+	private SignalBus _signalBus;
 
-	void Start()
+
+	[Inject]
+	void Init(SignalBus signalBus)
 	{
+		_signalBus = signalBus;
 		_connectedButton = GetComponent<Button>();
 	}
 
@@ -27,5 +33,6 @@ public class ShipSlotUI :  SelectableControl
 	public override void Activate()
 	{
 		_connectedButton.image.color = Color.green;
+		_signalBus.Fire(new SystemSignal.Ship.SlotSelected(SlotId));
 	}
 }

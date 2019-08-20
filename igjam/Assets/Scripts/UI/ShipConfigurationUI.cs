@@ -36,13 +36,14 @@ public class ShipConfigurationUI : MonoBehaviour
 		}
 		if (Input.GetButtonUp("B"))
 		{
+			_activeListView.ActivateSelectedSlot();
 			switch (_state)
 			{
 				case ConfigurationState.SelectControlSlot:
-					ActivateShipSlots();
+					ActivatePartSelection();
 					break; 
 				case ConfigurationState.SelectItem:
-					ActivatePartSelection();
+					ActivateShipSlots();
 					break;
 			}
 
@@ -51,9 +52,12 @@ public class ShipConfigurationUI : MonoBehaviour
 
 	private void ActivatePartSelection()
 	{
-		_activeListView.Deactivate();
-		_state = ConfigurationState.SelectControlSlot;
-		_activeListView = ShipControls;
+		if (_activeListView!=null)
+		{
+			_activeListView.Deactivate();
+		}
+		_state = ConfigurationState.SelectItem;
+		_activeListView = AvailableShipParts;
 		_activeListView.Activate();
 	}
 
@@ -63,9 +67,10 @@ public class ShipConfigurationUI : MonoBehaviour
 		{
 			_activeListView.Deactivate();
 		}
-		_state = ConfigurationState.SelectItem;
-		_activeListView = AvailableShipParts;
-		_activeListView.ActivateSelectedSlot();
+		
+		_state = ConfigurationState.SelectControlSlot;
+		_activeListView = ShipControls;
 		_activeListView.Activate();
+		
 	}
 }
