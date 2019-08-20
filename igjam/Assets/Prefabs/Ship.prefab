@@ -258,7 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToInstantiate: {fileID: 0}
+  PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
+    type: 3}
 --- !u!1 &2307453162944276753
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 77bcf307df6e66144bed1222d4414077, type: 3}
-  m_Color: {r: 0.7169812, g: 0.28746888, b: 0.55533874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -458,7 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToInstantiate: {fileID: 0}
+  PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
+    type: 3}
 --- !u!1 &4161772068318829220
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +532,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 77bcf307df6e66144bed1222d4414077, type: 3}
-  m_Color: {r: 0.7169812, g: 0.28746888, b: 0.55533874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -658,7 +660,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabToInstantiate: {fileID: 0}
+  PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
+    type: 3}
 --- !u!1 &5558961080646777312
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +733,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 77bcf307df6e66144bed1222d4414077, type: 3}
-  m_Color: {r: 0.7169812, g: 0.28746888, b: 0.55533874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -916,7 +919,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 77bcf307df6e66144bed1222d4414077, type: 3}
-  m_Color: {r: 0.7169812, g: 0.28746888, b: 0.55533874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
