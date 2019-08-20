@@ -44,13 +44,16 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
         this.body = ship.body; 
 
-        Vector2 pos = ship.transform.position;
-        Vector2 offset = Uhh.RotatedVector (fixture.transform.localPosition, ship.transform.rotation.eulerAngles.z);
+        // Vector2 pos = ship.transform.position;
+        // Vector2 offset = Uhh.RotatedVector (fixture.transform.localPosition, ship.transform.rotation.eulerAngles.z);
+        Vector2 pos = fixture.transform.position; 
+        Vector2 offset = Vector2.zero; 
         Vector2 scale = Vector2.one * .7f;
 
         if (activated) {
             offset += LOOKDIR * .25f;
         }
+
         if (selected) {
             scale = Vector2.one;
         }

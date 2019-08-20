@@ -43,7 +43,13 @@ public class Ship : MonoBehaviour
 		// parts.Add (part);
 		// parts[slotId].add(part); 
 
+        if(partFixtures[slotId].part != null) {
+            // SHOULD POP OUT THIS ALIEN YO !! 
+            Destroy(partFixtures[slotId].part.gameObject); 
+        }
+
 		partFixtures[slotId].part = part;
+    
 	}
 
 	public void SelectNextControl()
