@@ -19,7 +19,7 @@ public class AddControlDummy : MonoBehaviour {
     }
 
     void AddPart (int id) {
-        GameObject g = Instantiate (thrusterPrefab, ship.partFixtures[id].position, Quaternion.identity);
+        GameObject g = Instantiate (thrusterPrefab, ship.partFixtures[id].transform.position, Quaternion.identity);
 
         ship.AddControl (g.GetComponent<ShipPart> (), id);
     }

@@ -4,33 +4,49 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-    Rigidbody2D body;
+    [HideInInspector ()]
+    public Rigidbody2D body;
 
-    public List<Transform> partFixtures = new List<Transform> ();
+    [HideInInspector ()]
+    public List<PartFixture> partFixtures = new List<PartFixture> ();
 
+    // already to the ship
     public List<ShipPart> parts = new List<ShipPart> ();
 
     void Awake () {
         body = GetComponent<Rigidbody2D> ();
+        partFixtures.Clear ();
+        foreach (PartFixture f in GetComponentsInChildren<PartFixture> ()) {
+            partFixtures.Add (f);
+        }
     }
 
     void Update () {
         HandleParts ();
+
     }
 
     public void AddControl (ShipPart part, int slotId) {
 
-        part.fixtureId = slotId;
-        part.body = body;
-        parts.Add (part);
+        // part.body = body;
+        // parts.Add (part);
+        // parts[slotId].add(part); 
+
+        partFixtures[slotId].part = part;
     }
 
     public void SelectNextControl () { }
 
     void HandleParts () {
         // roll thtorugh list and update their position and rotation and such 
-        foreach (ShipPart part in parts) {            
-            part.TalkWithShip (this);
+        int i = 0;
+        foreach (ShipPart part in parts) {
+
+            // if (currentpart == i) {
+            //     part.Activate ();
+            // } else part.Deactivate ();
+            // part.TalkWithShip (this);
+            // i++;
         }
 
     }
