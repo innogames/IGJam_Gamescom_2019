@@ -18,4 +18,14 @@ public class PartFixture : MonoBehaviour {
             part.TalkWithShip (ship, this);
         }
     }
+
+    public void Pop () {
+        // if have part : pop it 
+
+        if (part != null) {
+            part.DisconnectFromShip ();
+            part.body.AddForce (Uhh.VectorFromAngle (transform.rotation.eulerAngles.z) * 5f, ForceMode2D.Impulse);
+        }
+        part = null;
+    }
 }

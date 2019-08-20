@@ -9,20 +9,37 @@ public class ShipPart : MonoBehaviour, IShipControl {
     public Vector2 SCALE { get { return transform.localScale; } set { transform.localScale = value; } }
     public Vector2 LOOKDIR { get { return -Uhh.VectorFromAngle (ROT); } }
 
+    public Ship ship;
+
+    [HideInInspector ()]
     public Rigidbody2D body;
+    CircleCollider2D col;
 
     public string button = "A";
 
     void Awake () {
-        body = GetComponentInParent<Rigidbody2D> ();
+        body = GetComponent<Rigidbody2D> ();
+        col = GetComponent<CircleCollider2D> ();
     }
 
     void Update () {
+
         Draw ();
+
+        if (ship == null) return;
 
         // debug stuff: 
         if (Input.GetButton (button)) Activate ();
         else Deactivate ();
+    }
+
+    public virtual void DisconnectFromShip () {
+        body.simulated = true;
+        col.enabled = true;
+    }
+    public virtual void ConnectToShip () {
+        body.simulated = false;
+        col.enabled = false;
     }
 
     public virtual void Draw () { }
@@ -42,12 +59,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public void TalkWithShip (Ship ship, PartFixture fixture) {
 
-        this.body = ship.body; 
+        this.ship = ship;
 
         // Vector2 pos = ship.transform.position;
         // Vector2 offset = Uhh.RotatedVector (fixture.transform.localPosition, ship.transform.rotation.eulerAngles.z);
-        Vector2 pos = fixture.transform.position; 
-        Vector2 offset = Vector2.zero; 
+        Vector2 pos = fixture.transform.position;
+        pos -= LOOKDIR * .5f;
+        Vector2 offset = Vector2.zero;
         Vector2 scale = Vector2.one * .7f;
 
         if (activated) {
