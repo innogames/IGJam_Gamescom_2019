@@ -1,7 +1,7 @@
 ﻿
 using Zenject;
 
-public class ConfigureShipState : BaseState
+public class ConfigureShipState : GameState
 {
 	private SignalBus _signalBus;
 

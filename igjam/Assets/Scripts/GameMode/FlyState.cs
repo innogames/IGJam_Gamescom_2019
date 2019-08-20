@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-public class FlyState : BaseState
+public class FlyState : GameState
 {
 	private SignalBus _signalBus;
 

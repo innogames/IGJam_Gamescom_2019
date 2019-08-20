@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameModeController : ListUI
 {
 
-	public BaseState CurrentState;
+	public GameState CurrentState;
 	
 	// Start is called before the first frame update
 	void Start()
@@ -24,7 +24,7 @@ public class GameModeController : ListUI
 	}
 }
 
-public class BaseState : SelectableControl
+public class GameState : SelectableControl
 {
 	public override void Select()
 	{

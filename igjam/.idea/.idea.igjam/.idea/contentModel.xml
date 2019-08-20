@@ -539,6 +539,7 @@
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
           <e p="PartFixture.cs" t="Include" />
+          <e p="RotateBy.cs" t="Include" />
           <e p="Ship" t="Include">
             <e p="IShipControl.cs" t="Include" />
             <e p="Ship.cs" t="Include" />
@@ -556,6 +557,9 @@
             <e p="ShipPartUI.cs" t="Include" />
             <e p="ShipSlotView.cs" t="Include" />
           </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="Dither.shader" t="Include" />
         </e>
       </e>
       <e p="igjam.sln" t="IncludeFlat" />

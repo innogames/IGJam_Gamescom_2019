@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-public class ConfigureControlsState : BaseState
+public class ConfigureControlsState : GameState
 {
 	private SignalBus _signalBus;
 

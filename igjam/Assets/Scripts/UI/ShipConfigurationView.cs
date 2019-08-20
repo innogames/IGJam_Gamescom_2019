@@ -25,6 +25,7 @@ public class ShipConfigurationView : MonoBehaviour
 		_signalBus = signalBus;
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
+		ActivateShipSlots();
 		//DeactivateUI();
 		
 	}
