@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class ShipPart : MonoBehaviour, IShipControl {
-
+ 
     public Vector2 POS { get { return transform.position; } set { transform.position = value; } }
     public float ROT { get { return transform.rotation.eulerAngles.z; } set { transform.rotation = Uhh.Rotation (Uhh.VectorFromAngle (value)); } }
     public Vector2 SCALE { get { return transform.localScale; } set { transform.localScale = value; } }
     public Vector2 LOOKDIR { get { return -Uhh.VectorFromAngle (ROT); } }
 
     public Ship ship;
-
+    
+    private SignalBus _signalBus;
+    
     [HideInInspector ()]
     public Rigidbody2D body;
     CircleCollider2D col;
 
     public string button = "A";
-
-    void Awake () {
+    [Inject]
+    void Init (SignalBus signalBus)
+    {
+        _signalBus = signalBus; 
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate>(() => enabled = true);
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate>(() => enabled = false);
         body = GetComponent<Rigidbody2D> ();
         col = GetComponent<CircleCollider2D> ();
     }
@@ -45,6 +52,8 @@ public class ShipPart : MonoBehaviour, IShipControl {
     public virtual void Draw () { }
     bool activated;
     bool selected;
+   
+
     public virtual void Activate () {
         activated = true;
     }
