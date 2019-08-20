@@ -2,11 +2,11 @@
 using UnityEngine.UI;
 using Zenject;
 
-[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class ShipPartUI : SelectableControl
 {
 	public ShipPart PrefabToInstantiate;
-	private Button _connectedButton;
+	private SpriteRenderer _connectedButton;
 	private SignalBus _signalBus;
 	private GameModel _gameModel;
 
@@ -14,23 +14,23 @@ public class ShipPartUI : SelectableControl
 	void Init(SignalBus signalBus, GameModel model)
 	{
 		_signalBus = signalBus;
-		_connectedButton = GetComponent<Button>();
+		_connectedButton = GetComponent<SpriteRenderer>();
 		_gameModel = model;
 	}
 
 	public override void Select()
 	{
-		_connectedButton.image.color = Color.red;
+		_connectedButton.color = Color.red;
 	}
 
 	public override void Deselect()
 	{
-		_connectedButton.image.color = Color.white;
+		_connectedButton.color = Color.white;
 	}
 
 	public override void Activate()
 	{
-		_connectedButton.image.color = Color.green;
+		_connectedButton.color = Color.green;
 		_signalBus.Fire(new SystemSignal.Ship.PartAttached(GetObject(), _gameModel.SelectedAttachmentSlotId));
 	}
 
