@@ -33,14 +33,11 @@ public class ShipPart : MonoBehaviour, IShipControl {
     CircleCollider2D col;
 
     public string button = "A";
-
-    void Awake(){
-        body = GetComponent<Rigidbody2D> ();
-        col = GetComponent<CircleCollider2D> ();
-    }
-
+    
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
+        body = GetComponent<Rigidbody2D> ();
+        col = GetComponent<CircleCollider2D> ();
         _signalBus = signalBus;
         _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
         _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);

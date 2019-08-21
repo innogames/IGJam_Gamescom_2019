@@ -20,12 +20,23 @@ public class Ship : MonoBehaviour {
     private SignalBus _signalBus;
 
     void Awake() {
-        body = GetComponent<Rigidbody2D> ();
+        
     }
 
     [Inject]
     void Init (SignalBus signalBus) {
+        body = GetComponent<Rigidbody2D> ();
         partFixtures.Clear ();
+       
+
+        _signalBus = signalBus;
+        _signalBus.Subscribe<SystemSignal.Ship.PartAttached> (AttachNewPart);
+        _signalBus.Subscribe<SystemSignal.Ship.ControlUpdated> (UpdateSlotControl);
+
+    }
+
+    void Start()
+    {
         foreach (PartFixture slotFixture in GetComponentsInChildren<PartFixture> ()) {
             partFixtures.Add (slotFixture);
             if (slotFixture.part != null) {
@@ -37,11 +48,6 @@ public class Ship : MonoBehaviour {
             alien.CreateActualAlien ();
             aliens.Add (alien);
         }
-
-        _signalBus = signalBus;
-        _signalBus.Subscribe<SystemSignal.Ship.PartAttached> (AttachNewPart);
-        _signalBus.Subscribe<SystemSignal.Ship.ControlUpdated> (UpdateSlotControl);
-
     }
 
     private void UpdateSlotControl (SystemSignal.Ship.ControlUpdated signal) {

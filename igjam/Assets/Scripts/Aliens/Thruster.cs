@@ -12,7 +12,7 @@ public class Thruster : ShipPart {
     public Sprite PinkThruster;
     public Sprite BlueThruster;
 
-    void Awake () {
+    public void  Awake () {
         sfx = GetComponent<SFXLoop> ();
         _shownView = GetComponent<SpriteRenderer> ();
     }
