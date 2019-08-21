@@ -524,6 +524,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="CameraBrain.cs" t="Include" />
           <e p="ControlTesting.cs" t="Include" />
           <e p="GameMode" t="Include">
             <e p="ConfigureControlsState.cs" t="Include" />
@@ -538,6 +539,7 @@
           <e p="Installers" t="Include">
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
+          <e p="LookAtCam.cs" t="Include" />
           <e p="Obstacle.cs" t="Include" />
           <e p="RotateBy.cs" t="Include" />
           <e p="SFX.cs" t="Include" />

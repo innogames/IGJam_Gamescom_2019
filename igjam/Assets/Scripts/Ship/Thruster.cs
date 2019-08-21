@@ -8,6 +8,7 @@ public class Thruster : ShipPart
 	public float force;
 	private SpriteRenderer _shownView;
 
+
 	public float Stablity = 0.5f;
 
 	public Sprite PinkThruster;

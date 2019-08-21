@@ -62,12 +62,14 @@ public class Ship : MonoBehaviour {
             // Destroy(partFixtures[slotId].part.gameObject); 
             partFixtures[slotId].Pop ();
             pushOutAlienSFX.Play ();
+            partFixtures[slotId].part.ShowBubble();
         }
 
         if (part != null) {
             part.DisablePhysics ();
             partFixtures[slotId].part = part;
             assignAlienSFX.Play ();
+            part.ShowBubble();
         } else {
 
         }

@@ -25,6 +25,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
     }
 
     public Ship ship;
+    public Animator SpeechBubble;
 
     private SignalBus _signalBus;
 
@@ -124,5 +125,10 @@ public class ShipPart : MonoBehaviour, IShipControl {
             // Destroy (gameObject);
             s.PickUpPartFromSpace (this);
         }
+    }
+
+    public void ShowBubble()
+    {
+        SpeechBubble.SetTrigger("Show");
     }
 }
