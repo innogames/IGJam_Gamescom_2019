@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Thruster : ShipPart {
+public class Thruster : ShipPart
+{
+	SFXLoop sfx;
+	public float force;
+	private SpriteRenderer _shownView;
 
-    SFXLoop sfx;
+	public Sprite PinkThruster;
+	public Sprite BlueThruster;
 
-    public float force;
+	void Awake()
+	{
+		sfx = GetComponent<SFXLoop>();
+	}
 
-    void Awake () {
-        sfx = GetComponent<SFXLoop> ();
-
-    }
-
-    public override void Draw () { }
+	public override void Draw()
+	{
+	}
 
     public override void Activate () {
         base.Activate ();
@@ -24,4 +29,16 @@ public class Thruster : ShipPart {
         sfx.Play ();
     }
 
+	public override void AssignButton(string newControlName)
+	{
+		base.AssignButton(newControlName);
+		if (button == "A")
+		{
+			_shownView.sprite = BlueThruster;
+		}
+		else
+		{
+			_shownView.sprite = PinkThruster;
+		}
+	}
 }

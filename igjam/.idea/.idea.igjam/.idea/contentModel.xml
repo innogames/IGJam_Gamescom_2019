@@ -539,18 +539,20 @@
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
           <e p="Obstacle.cs" t="Include" />
-          <e p="PartFixture.cs" t="Include" />
-          <e p="Planet.cs" t="Include" />
           <e p="RotateBy.cs" t="Include" />
+          <e p="SFX.cs" t="Include" />
+          <e p="SFXLoop.cs" t="Include" />
           <e p="Ship" t="Include">
             <e p="IShipControl.cs" t="Include" />
+            <e p="PartFixture.cs" t="Include" />
             <e p="Ship.cs" t="Include" />
+            <e p="ShipInhabitant.cs" t="Include" />
+            <e p="ShipPart.cs" t="Include" />
+            <e p="Thruster.cs" t="Include" />
           </e>
-          <e p="ShipPart.cs" t="Include" />
           <e p="Testing" t="Include">
             <e p="AddControlDummy.cs" t="Include" />
           </e>
-          <e p="Thruster.cs" t="Include" />
           <e p="Uhh.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="ControllerConfigurationView.cs" t="Include" />

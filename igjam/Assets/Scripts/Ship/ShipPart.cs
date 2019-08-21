@@ -124,17 +124,9 @@ public class ShipPart : MonoBehaviour, IShipControl {
         selected = false;
     }
 
-    public void AssignButton (string newControlName) {
+    public virtual void AssignButton (string newControlName) {
 
         button = newControlName;
-        var view = gameObject.GetComponent<SpriteRenderer> ();
-        if (button == "A" && view != null) {
-            view.color = Color.red;
-        }
-
-        if (button == "B" && view != null) {
-            view.color = Color.green;
-        }
     }
 
     void OnCollisionEnter2D (Collision2D col) {
