@@ -23,7 +23,7 @@ public class PartFixture : MonoBehaviour {
         // if have part : pop it 
 
         if (part != null) {
-            part.DisconnectFromShip ();
+            part.EnablePhysics ();
             part.body.AddForce (Uhh.VectorFromAngle (transform.rotation.eulerAngles.z) * 5f, ForceMode2D.Impulse);
         }
         part = null;
