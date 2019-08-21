@@ -52,6 +52,7 @@ MonoBehaviour:
   body: {fileID: 0}
   button: A
   force: 3
+  Stablity: 0
   PinkThruster: {fileID: 21300000, guid: c25b3d072cffd4cc4b796b61e4e6c963, type: 3}
   BlueThruster: {fileID: 21300000, guid: c25b3d072cffd4cc4b796b61e4e6c963, type: 3}
 --- !u!212 &7872197171666061871
