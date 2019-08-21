@@ -524,6 +524,10 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Aliens" t="Include">
+            <e p="Shielder.cs" t="Include" />
+            <e p="Thruster.cs" t="Include" />
+          </e>
           <e p="CameraBrain.cs" t="Include" />
           <e p="ControlTesting.cs" t="Include" />
           <e p="GameMode" t="Include">

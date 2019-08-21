@@ -24,13 +24,13 @@ public class Thruster : ShipPart
 	{
 	}
 
-    public override void Activate () {
-        base.Activate ();
-        Vector2 dir = -Uhh.VectorFromAngle (ROT);
-        ship.body.AddForceAtPosition (LOOKDIR * force * (1 - Stablity), POS, ForceMode2D.Force);
-        ship.body.AddForce (LOOKDIR * force * Stablity, ForceMode2D.Force);
-        sfx.Play ();
-    }
+	public override void Activate () {
+		base.Activate ();
+		Vector2 dir = -Uhh.VectorFromAngle (ROT);
+		ship.body.AddForceAtPosition (LOOKDIR * force * (1 - Stablity), POS, ForceMode2D.Force);
+		ship.body.AddForce (LOOKDIR * force * Stablity, ForceMode2D.Force);
+		sfx.Play ();
+	}
 
 	public override void AssignButton(string newControlName)
 	{

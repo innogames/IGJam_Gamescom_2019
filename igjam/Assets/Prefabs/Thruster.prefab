@@ -384,14 +384,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7872197171666061866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 458fce0099b1eed42b8a0a114a6cf767, type: 3}
+  m_Script: {fileID: 11500000, guid: 5922a0e261c8e4a2ead1817bbbdda21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 0}
   SpeechBubble: {fileID: 2324711318733250370}
   body: {fileID: 0}
   button: A
-  force: 3
+  force: 10
   Stablity: 0
   PinkThruster: {fileID: 21300000, guid: c25b3d072cffd4cc4b796b61e4e6c963, type: 3}
   BlueThruster: {fileID: 21300000, guid: 40de38fb75eb4416fb2b05abeaeb5e3d, type: 3}
