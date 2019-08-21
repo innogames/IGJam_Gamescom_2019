@@ -54,6 +54,8 @@ public class Ship : MonoBehaviour {
         if (part != null) {
             part.ConnectToShip ();
             partFixtures[slotId].part = part;
+        } else {
+        
         }
     }
 
