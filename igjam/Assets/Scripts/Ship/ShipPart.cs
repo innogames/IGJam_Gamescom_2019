@@ -33,6 +33,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
     CircleCollider2D col;
 
     public string button = "A";
+    public AlienGenerator Generator;
     
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
@@ -133,6 +134,8 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public void ShowBubble () {
         SpeechBubble.SetTrigger ("Show");
+        Generator.GenerateAlien();
+        
     }
 
     List<EffectBase> effects = new List<EffectBase> ();

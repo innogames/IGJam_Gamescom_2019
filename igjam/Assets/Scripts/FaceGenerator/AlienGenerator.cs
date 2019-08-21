@@ -14,59 +14,50 @@ public class AlienGenerator : MonoBehaviour
 	public Transform HeadPosition;
 	private Alien _alien;
 	public bool Generate;
-
-	// Start is called before the first frame update
-	void Start()
-	{
-		GenerateAlien();
-	}
-
+	private AlienHead _headObject;
 
 	void Update()
 	{
 		if (Generate)
 		{
-			var children = GetComponentsInChildren<Transform>();
-			foreach (var child in children)
+			if (Application.isPlaying)
 			{
-				if (child.transform != transform)
-				{
-                    if (Application.isPlaying)
-                    {
-                        Object.Destroy(child.gameObject);
-                    }
-                    else {
-                        Object.DestroyImmediate(child.gameObject);
-                    }
-                    
-				}
-
+				Object.Destroy(_headObject.gameObject);
 			}
+			else
+			{
+				Object.DestroyImmediate(_headObject.gameObject);
+			}
+
 			Generate = false;
 			GenerateAlien();
 		}
 	}
 
-	private void GenerateAlien()
+	public void GenerateAlien()
 	{
-		_alien = new Alien();
-		_alien.HeadId = UnityEngine.Random.Range(0, AvailableHeadShapes.Count);
-		_alien.MouthId = UnityEngine.Random.Range(0, AvailableMouthShapes.Count);
-		_alien.NoseId = UnityEngine.Random.Range(0, AvailableNoseShapes.Count);
-		_alien.EyesId = UnityEngine.Random.Range(0, AvailableEyeShapes.Count);
+		if (_alien == null)
+		{
+			_alien = new Alien();
+			_alien.HeadId = UnityEngine.Random.Range(0, AvailableHeadShapes.Count);
+			_alien.MouthId = UnityEngine.Random.Range(0, AvailableMouthShapes.Count);
+			_alien.NoseId = UnityEngine.Random.Range(0, AvailableNoseShapes.Count);
+			_alien.EyesId = UnityEngine.Random.Range(0, AvailableEyeShapes.Count);
+		}
+
 		GenerateAlien(_alien);
 	}
 
 	public void GenerateAlien(Alien alien)
 	{
-		var headObject = Instantiate(AvailableHeadShapes[alien.HeadId]);
-		PlaceObject(headObject.transform, HeadPosition);
+		_headObject = Instantiate(AvailableHeadShapes[alien.HeadId]);
+		PlaceObject(_headObject.transform, HeadPosition);
 		var mouthObject = Instantiate(AvailableMouthShapes[alien.MouthId]);
-		PlaceObject(mouthObject.transform, headObject.MouthSlot);
+		PlaceObject(mouthObject.transform, _headObject.MouthSlot);
 		var noseObject = Instantiate(AvailableNoseShapes[alien.NoseId]);
-		PlaceObject(noseObject.transform, headObject.NoseSlot);
+		PlaceObject(noseObject.transform, _headObject.NoseSlot);
 		var eyesObject = Instantiate(AvailableEyeShapes[alien.EyesId]);
-		PlaceObject(eyesObject.transform, headObject.EyesSlot);
+		PlaceObject(eyesObject.transform, _headObject.EyesSlot);
 	}
 
 	private void PlaceObject(Transform objectToPlace, Transform target)
@@ -81,7 +72,6 @@ public class AlienGenerator : MonoBehaviour
 	{
 		return _alien;
 	}
-
 }
 
 public class Alien
