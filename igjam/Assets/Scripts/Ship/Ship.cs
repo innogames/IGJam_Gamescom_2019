@@ -7,6 +7,9 @@ public class Ship : MonoBehaviour {
 
     public SFX assignAlienSFX;
     public SFX pushOutAlienSFX;
+    public SFX openHatchSFX; 
+    public SFX assignEmptySFX; 
+    public SFX moveAlienSelectionSFX; 
 
     [HideInInspector ()] public Rigidbody2D body;
 
