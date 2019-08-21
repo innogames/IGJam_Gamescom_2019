@@ -36,14 +36,30 @@ public class ShipPart : MonoBehaviour, IShipControl {
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
         _signalBus = signalBus;
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (() => enabled = true);
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (() => enabled = false);
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
         body = GetComponent<Rigidbody2D> ();
         col = GetComponent<CircleCollider2D> ();
         if (model.ActiveState != typeof (FlyState)) {
             enabled = false;
         }
 
+    }
+
+    private void EnableObject()
+    {
+        enabled = true;
+    }
+    
+    private void DisableObject()
+    {
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
+        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
     }
 
     void Update () {

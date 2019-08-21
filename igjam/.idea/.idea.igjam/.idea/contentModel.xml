@@ -538,7 +538,9 @@
           <e p="Installers" t="Include">
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
+          <e p="Obstacle.cs" t="Include" />
           <e p="PartFixture.cs" t="Include" />
+          <e p="Planet.cs" t="Include" />
           <e p="RotateBy.cs" t="Include" />
           <e p="Ship" t="Include">
             <e p="IShipControl.cs" t="Include" />
@@ -561,6 +563,7 @@
         </e>
         <e p="Shaders" t="Include">
           <e p="Dither.shader" t="Include" />
+          <e p="UnlitTransparentColor.shader" t="Include" />
         </e>
       </e>
       <e p="igjam.sln" t="IncludeFlat" />

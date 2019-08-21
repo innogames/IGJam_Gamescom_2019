@@ -5,34 +5,31 @@ using UnityEngine.UI;
 using Zenject;
 
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class ShipSlotView :  SelectableControl
 {
 	public int SlotId;
-	private SpriteRenderer _connectedButton;
+	public Animator AnimationControl;
 	private SignalBus _signalBus;
-
 
 	[Inject]
 	void Init(SignalBus signalBus)
 	{
 		_signalBus = signalBus;
-		_connectedButton = GetComponent<SpriteRenderer>();
 	}
 
 	public override void Select()
 	{
-		_connectedButton.color = Color.red;
+		AnimationControl.SetTrigger("Select");
 	}
 
 	public override void Deselect()
 	{
-		_connectedButton.color = Color.white;
+		AnimationControl.SetTrigger("Deselect");
 	}
 
 	public override void Activate()
 	{
-		_connectedButton.color = Color.green;
+		AnimationControl.SetTrigger("Hide");
 		_signalBus.Fire(new SystemSignal.Ship.SlotSelected(SlotId));
 	}
 }
