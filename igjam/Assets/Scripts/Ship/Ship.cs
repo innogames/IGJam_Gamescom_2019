@@ -67,9 +67,9 @@ public class Ship : MonoBehaviour {
         if (partFixtures[slotId].part != null) {
             // SHOULD POP OUT THIS ALIEN YO !! 
             // Destroy(partFixtures[slotId].part.gameObject); 
+            partFixtures[slotId].part.ShowBubble ();
             partFixtures[slotId].Pop ();
             pushOutAlienSFX.Play ();
-            partFixtures[slotId].part.ShowBubble ();
         }
         JustAddControl (part, slotId);
     }
