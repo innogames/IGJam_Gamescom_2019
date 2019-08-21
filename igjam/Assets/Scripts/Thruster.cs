@@ -13,10 +13,10 @@ public class Thruster : ShipPart {
     public override void Activate () {
         base.Activate ();
         Vector2 dir = -Uhh.VectorFromAngle (ROT);
-        ship.body.AddForceAtPosition (LOOKDIR * force, POS, ForceMode2D.Force);
+        float stability = .5f;
+        ship.body.AddForceAtPosition (LOOKDIR * force * (1 - stability), POS, ForceMode2D.Force);
+        ship.body.AddForce (LOOKDIR * force * stability, ForceMode2D.Force);
         // body is null here !! 
-        
-        Debug.DrawRay (POS, LOOKDIR, Color.red, .1f);
 
     }
 
