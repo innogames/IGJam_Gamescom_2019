@@ -43,21 +43,17 @@ public class ShipPart : MonoBehaviour, IShipControl {
         if (model.ActiveState != typeof (FlyState)) {
             enabled = false;
         }
-
     }
 
-    private void EnableObject()
-    {
+    private void EnableObject () {
         enabled = true;
     }
-    
-    private void DisableObject()
-    {
+
+    private void DisableObject () {
         enabled = false;
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy () {
         _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
         _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
     }
@@ -99,34 +95,26 @@ public class ShipPart : MonoBehaviour, IShipControl {
     public void Select () {
         selected = true;
     }
-
+ 
     public void TalkWithShip (Ship ship, PartFixture fixture) {
         this.ship = ship;
 
-        // Vector2 pos = ship.transform.position;
-        // Vector2 offset = Uhh.RotatedVector (fixture.transform.localPosition, ship.transform.rotation.eulerAngles.z);
         Vector2 pos = fixture.transform.position;
         pos -= LOOKDIR * .5f;
         Vector2 offset = Vector2.zero;
-        Vector2 scale = Vector2.one * .7f;
 
         if (activated) {
             offset += LOOKDIR * .25f;
         }
 
-        if (selected) {
-            scale = Vector2.one;
-        }
-
         POS = Vector2.Lerp (POS, pos + offset, .35f);
-        ROT = Mathf.LerpAngle (ROT, fixture.transform.eulerAngles.z, .35f);
-        SCALE = Vector2.Lerp (SCALE, scale, .35f);
+        ROT = Mathf.LerpAngle (ROT, fixture.transform.eulerAngles.z  , .35f);
         selected = false;
     }
 
     public virtual void AssignButton (string newControlName) {
 
-        button = newControlName;
+        button = newControlName;    
     }
 
     void OnCollisionEnter2D (Collision2D col) {
