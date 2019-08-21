@@ -151,6 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 76751170997608913}
   - component: {fileID: 54639613982592073}
+  - component: {fileID: 4924146005444591585}
   m_Layer: 0
   m_Name: Head02
   m_TagString: Untagged
@@ -210,7 +211,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 6c5f9ccb144267945966a29c9ea72297, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9607843, g: 0.29803923, b: 0.53333336, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -220,6 +221,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4924146005444591585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979247272678317767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1beef8194894ea7b8ce69ae29e1db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: B
 --- !u!1 &8856990221880052171
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2514521988662790908}
   - component: {fileID: 3650316205433424432}
+  - component: {fileID: 6793766443897421486}
   m_Layer: 0
   m_Name: Head02 (1)
   m_TagString: Untagged
@@ -289,7 +304,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 6c5f9ccb144267945966a29c9ea72297, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.41960785, g: 0.7019608, b: 0.9137255, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -299,3 +314,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!114 &6793766443897421486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856990221880052171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a1beef8194894ea7b8ce69ae29e1db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: A
