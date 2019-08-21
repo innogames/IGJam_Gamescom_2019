@@ -30,6 +30,7 @@ public class Shielder : ShipPart {
         sfx.Play ();
         // GROW !! 
         shieldingtimer = 0.25f;
+        ShowEffects ();
     }
 
     public override void AssignButton (string newControlName) {

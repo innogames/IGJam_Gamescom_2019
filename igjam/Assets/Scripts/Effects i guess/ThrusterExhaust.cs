@@ -10,13 +10,15 @@ public class ThrusterExhaust : EffectBase {
         baseposition = transform.localPosition;
     }
 
-    void Update () {
+    public override void Update () {
+        base.Update ();
+        Vector2 targetscale = Vector2.one * Random.Range (.9f, 1.1f);
         if (SHOWING) {
             Vector2 r = Uhh.RandomVector ();
             transform.localPosition = baseposition + r;
-            transform.localScale = Vector2.one;
         } else {
-            transform.localScale = Vector2.zero;
+            targetscale = Vector2.zero;
         }
+        transform.localScale = Vector2.Lerp (transform.localScale, targetscale, .3f);
     }
 }

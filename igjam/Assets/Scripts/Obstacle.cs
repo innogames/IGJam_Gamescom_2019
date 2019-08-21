@@ -51,7 +51,7 @@ public class Obstacle : MonoBehaviour {
                 }
             }
 
-            stuntimer = .75f;
+            stuntimer = .25f;
             subject.AddForceAtPosition (away * pushaway, c.point, ForceMode2D.Impulse);
             body.AddForceAtPosition (-away * selfbounce, c.point, ForceMode2D.Impulse);
             bounceSFX.Play ();
