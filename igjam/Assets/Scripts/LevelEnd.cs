@@ -1,23 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string LevelName;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        var ship = other.gameObject.GetComponent<Ship>();
+        if (ship != null)
+        {
+            SceneManager.LoadScene(LevelName);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Git");
-    }
+    
 }

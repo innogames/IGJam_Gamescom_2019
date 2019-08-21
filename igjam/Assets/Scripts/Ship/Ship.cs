@@ -27,8 +27,6 @@ public class Ship : MonoBehaviour {
     void Init (SignalBus signalBus) {
         body = GetComponent<Rigidbody2D> ();
         partFixtures.Clear ();
-       
-
         _signalBus = signalBus;
         _signalBus.Subscribe<SystemSignal.Ship.PartAttached> (AttachNewPart);
         _signalBus.Subscribe<SystemSignal.Ship.ControlUpdated> (UpdateSlotControl);
