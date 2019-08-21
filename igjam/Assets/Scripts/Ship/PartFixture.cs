@@ -6,6 +6,8 @@ public class PartFixture : MonoBehaviour {
 
     public ShipPart part;
 
+    public Vector2 LOOKDIR { get { return Uhh.VectorFromAngle (transform.rotation.eulerAngles.z); } }
+
     Ship ship;
 
     void Start () {
@@ -24,7 +26,7 @@ public class PartFixture : MonoBehaviour {
 
         if (part != null) {
             part.EnablePhysics ();
-            part.body.AddForce (Uhh.VectorFromAngle (transform.rotation.eulerAngles.z) * 5f, ForceMode2D.Impulse);
+            part.body.AddForce (LOOKDIR * 5f, ForceMode2D.Impulse);
         }
         part = null;
     }
