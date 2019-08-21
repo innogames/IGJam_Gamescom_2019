@@ -25,6 +25,15 @@ public class AlienGenerator : MonoBehaviour
 	{
 		if (Generate)
 		{
+			var children = GetComponentsInChildren<Transform>();
+			foreach (var child in children)
+			{
+				if (child.transform != transform)
+				{
+					Object.Destroy(child.gameObject);
+				}
+
+			}
 			Generate = false;
 			GenerateAlien();
 		}
@@ -37,6 +46,7 @@ public class AlienGenerator : MonoBehaviour
 		_alien.MouthId = UnityEngine.Random.Range(0, AvailableMouthShapes.Count);
 		_alien.NoseId = UnityEngine.Random.Range(0, AvailableNoseShapes.Count);
 		_alien.EyesId = UnityEngine.Random.Range(0, AvailableEyeShapes.Count);
+		GenerateAlien(_alien);
 	}
 
 	public void GenerateAlien(Alien alien)
@@ -45,15 +55,15 @@ public class AlienGenerator : MonoBehaviour
 		PlaceObject(headObject.transform, HeadPosition);
 		var mouthObject = Instantiate(AvailableMouthShapes[alien.MouthId]);
 		PlaceObject(mouthObject.transform, headObject.MouthSlot);
-		var noseObject = Instantiate(AvailableMouthShapes[alien.NoseId]);
+		var noseObject = Instantiate(AvailableNoseShapes[alien.NoseId]);
 		PlaceObject(noseObject.transform, headObject.NoseSlot);
-		var eyesObject = Instantiate(AvailableMouthShapes[alien.EyesId]);
+		var eyesObject = Instantiate(AvailableEyeShapes[alien.EyesId]);
 		PlaceObject(eyesObject.transform, headObject.EyesSlot);
 	}
 
 	private void PlaceObject(Transform objectToPlace, Transform target)
 	{
-		objectToPlace.transform.SetParent(HeadPosition);
+		objectToPlace.transform.SetParent(target);
 		objectToPlace.transform.localPosition = Vector3.zero;
 		objectToPlace.transform.localScale = Vector3.one;
 		objectToPlace.transform.localRotation = Quaternion.identity;

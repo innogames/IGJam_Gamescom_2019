@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4514563281501969370}
+  - component: {fileID: 1911376526938264138}
   m_Layer: 0
   m_Name: Head07
   m_TagString: Untagged
@@ -65,6 +66,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1911376526938264138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4514563281501969369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbed643be6c94e31b13d1d90a6497f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EyesSlot: {fileID: 4514563282547384943}
+  MouthSlot: {fileID: 4514563282959068783}
+  NoseSlot: {fileID: 4514563281267027799}
 --- !u!1 &4514563281552094586
 GameObject:
   m_ObjectHideFlags: 0
