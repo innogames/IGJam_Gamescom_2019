@@ -36,14 +36,30 @@ public class ShipPart : MonoBehaviour, IShipControl {
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
         _signalBus = signalBus;
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (() => enabled = true);
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (() => enabled = false);
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
+        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
         body = GetComponent<Rigidbody2D> ();
         col = GetComponent<CircleCollider2D> ();
         if (model.ActiveState != typeof (FlyState)) {
             enabled = false;
         }
 
+    }
+
+    private void EnableObject()
+    {
+        enabled = true;
+    }
+    
+    private void DisableObject()
+    {
+        enabled = false;
+    }
+
+    private void OnDestroy()
+    {
+        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
+        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
     }
 
     void Update () {
@@ -56,13 +72,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
         else Deactivate ();
     }
 
-    public virtual void DisconnectFromShip () {
+    public virtual void EnablePhysics () {
         body.simulated = true;
         col.enabled = true;
         ship = null;
     }
 
-    public virtual void ConnectToShip () {
+    public virtual void DisablePhysics () {
         body.simulated = false;
         col.enabled = false;
     }
@@ -108,24 +124,17 @@ public class ShipPart : MonoBehaviour, IShipControl {
         selected = false;
     }
 
-    public void AssignButton (string newControlName) {
+    public virtual void AssignButton (string newControlName) {
 
         button = newControlName;
-        var view = gameObject.GetComponent<SpriteRenderer> ();
-        if (button == "A" && view != null) {
-            view.color = Color.red;
-        }
-
-        if (button == "B" && view != null) {
-            view.color = Color.green;
-        }
     }
 
     void OnCollisionEnter2D (Collision2D col) {
         Ship s = col.collider.gameObject.GetComponent<Ship> ();
         if (s != null) {
             // GET PICKED BACK UP AGAIN !! 
-            Destroy (gameObject);
+            // Destroy (gameObject);
+            s.PickUpPartFromSpace (this);
         }
     }
 }

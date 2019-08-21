@@ -11,9 +11,12 @@ public class Obstacle : MonoBehaviour {
     Rigidbody2D body;
     Vector2 startpos;
 
+    SFX bounceSFX;
+
     void Awake () {
         body = GetComponent<Rigidbody2D> ();
         startpos = transform.position;
+        bounceSFX = GetComponent<SFX> ();
     }
 
     void Update () {
@@ -29,6 +32,7 @@ public class Obstacle : MonoBehaviour {
             Vector2 away = (col.collider.gameObject.transform.position - transform.position).normalized;
             subject.AddForceAtPosition (away * pushaway, c.point, ForceMode2D.Impulse);
             body.AddForceAtPosition (-away * selfbounce, c.point, ForceMode2D.Impulse);
+            bounceSFX.Play ();
         }
     }
 }
