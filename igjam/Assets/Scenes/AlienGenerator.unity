@@ -302,7 +302,7 @@ MonoBehaviour:
   - {fileID: 8203081361686538860, guid: fdc629b7f6dfb47428bfbbeb3a16e3bf, type: 3}
   - {fileID: 3086208636963200245, guid: 57de056f89f1a1c47b404be6bce5e2de, type: 3}
   HeadPosition: {fileID: 1863765812}
-  Generate: 0
+  Generate: 1
 --- !u!4 &1863765812
 Transform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class AlienGenerator : MonoBehaviour
 {
 	private int seed = 1111;
@@ -30,7 +31,14 @@ public class AlienGenerator : MonoBehaviour
 			{
 				if (child.transform != transform)
 				{
-					Object.Destroy(child.gameObject);
+                    if (Application.isPlaying)
+                    {
+                        Object.Destroy(child.gameObject);
+                    }
+                    else {
+                        Object.DestroyImmediate(child.gameObject);
+                    }
+                    
 				}
 
 			}
