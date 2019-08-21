@@ -34,15 +34,22 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public string button = "A";
 
+    void Awake(){
+        body = GetComponent<Rigidbody2D> ();
+        col = GetComponent<CircleCollider2D> ();
+    }
+
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
         _signalBus = signalBus;
         _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
         _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
-        body = GetComponent<Rigidbody2D> ();
-        col = GetComponent<CircleCollider2D> ();
         if (model.ActiveState != typeof (FlyState)) {
             enabled = false;
+        }
+
+        foreach (EffectBase e in GetComponentsInChildren<EffectBase> ()) {
+            effects.Add (e);
         }
     }
 
@@ -96,7 +103,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
     public void Select () {
         selected = true;
     }
- 
+
     public void TalkWithShip (Ship ship, PartFixture fixture) {
         this.ship = ship;
 
@@ -109,13 +116,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
         }
 
         POS = Vector2.Lerp (POS, pos + offset, .35f);
-        ROT = Mathf.LerpAngle (ROT, fixture.transform.eulerAngles.z  , .35f);
+        ROT = Mathf.LerpAngle (ROT, fixture.transform.eulerAngles.z, .35f);
         selected = false;
     }
 
     public virtual void AssignButton (string newControlName) {
 
-        button = newControlName;    
+        button = newControlName;
     }
 
     void OnCollisionEnter2D (Collision2D col) {
@@ -127,8 +134,14 @@ public class ShipPart : MonoBehaviour, IShipControl {
         }
     }
 
-    public void ShowBubble()
-    {
-        SpeechBubble.SetTrigger("Show");
+    public void ShowBubble () {
+        SpeechBubble.SetTrigger ("Show");
+    }
+
+    List<EffectBase> effects = new List<EffectBase> ();
+    protected void ShowEffects () {
+        foreach (EffectBase e in effects) {
+            e.Show ();
+        }
     }
 }
