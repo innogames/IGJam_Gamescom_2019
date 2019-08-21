@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-    float pushaway = 10;
-    float selfbounce = 50;
-    float wobblespeed = 100;
+    public float pushaway = 10;
+    public float selfbounce = 50;
+    public float wobblespeed = 100;
 
     Rigidbody2D body;
     Vector2 startpos;
