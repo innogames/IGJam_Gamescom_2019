@@ -16,6 +16,7 @@ public class Thruster : ShipPart
 	void Awake()
 	{
 		sfx = GetComponent<SFXLoop>();
+		_shownView = GetComponent<SpriteRenderer>();
 	}
 
 	public override void Draw()
