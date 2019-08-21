@@ -5,14 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    [SerializeField] private string LevelName;
+    public Transform NextLevelStart;
+    public Camera CurrentCamera;
+    public Camera NextCamera;
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         var ship = other.gameObject.GetComponent<Ship>();
         if (ship != null)
         {
-            SceneManager.LoadScene(LevelName);
+            ship.transform.position = NextLevelStart.position;
+            CurrentCamera.gameObject.SetActive(false);
+            NextCamera.gameObject.SetActive(true);
         }
     }
 

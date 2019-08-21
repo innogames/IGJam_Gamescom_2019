@@ -21,7 +21,7 @@ public class CameraBrain : MonoBehaviour {
 
     [Inject]
     void Init (SignalBus signalBus) {
-        cam = Camera.main;
+        cam = GetComponent<Camera>();
         startpos = transform.position;
         _signalBus = signalBus;
         _signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate> (ActivateUI);
