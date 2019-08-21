@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4756949124166568}
   - component: {fileID: 33415978799708978}
   - component: {fileID: 23758191124830188}
+  - component: {fileID: 1178917812597395889}
   m_Layer: 0
   m_Name: Astroid
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752968184259506}
-  m_LocalRotation: {x: -0.41637883, y: 0.008377309, z: -0.30717358, w: 0.85568863}
-  m_LocalPosition: {x: -8.47, y: 4.3, z: 1.42}
-  m_LocalScale: {x: 1.325168, y: 1.3251675, z: 1.3251675}
+  m_LocalRotation: {x: -0.07323394, y: -0.04261188, z: -0.5139995, w: 0.85359573}
+  m_LocalPosition: {x: -7.4, y: -1.79, z: 0.53}
+  m_LocalScale: {x: 2.5045676, y: 2.5045667, z: 2.5045667}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -45.027, y: 22.471, z: -48.908}
+  m_LocalEulerAnglesHint: {x: -9.72, y: 0.148, z: -62.122}
 --- !u!33 &33415978799708978
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1178917812597395889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752968184259506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10a0d3ba9b13964fb3b8c9fe2c95483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateAmount: {x: 20.56, y: 10, z: 5}
