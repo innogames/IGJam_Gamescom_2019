@@ -72,13 +72,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
         else Deactivate ();
     }
 
-    public virtual void DisconnectFromShip () {
+    public virtual void EnablePhysics () {
         body.simulated = true;
         col.enabled = true;
         ship = null;
     }
 
-    public virtual void ConnectToShip () {
+    public virtual void DisablePhysics () {
         body.simulated = false;
         col.enabled = false;
     }
@@ -141,7 +141,8 @@ public class ShipPart : MonoBehaviour, IShipControl {
         Ship s = col.collider.gameObject.GetComponent<Ship> ();
         if (s != null) {
             // GET PICKED BACK UP AGAIN !! 
-            Destroy (gameObject);
+            // Destroy (gameObject);
+            s.PickUpPartFromSpace (this);
         }
     }
 }

@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 6981820641222179441}
   - component: {fileID: 1000493766276422745}
   - component: {fileID: 3854502448774180576}
+  - component: {fileID: 2834492746332841537}
+  - component: {fileID: 8756364579805876912}
+  - component: {fileID: 5640140295756221349}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -50,13 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9187b0c099cd947e38fba238443349a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assignAlienSFX: {fileID: 2834492746332841537}
+  pushOutAlienSFX: {fileID: 8756364579805876912}
   body: {fileID: 0}
   partFixtures:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  parts: []
+  aliens: []
 --- !u!212 &920978506075354939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -166,6 +171,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipControls: {fileID: 6545045229369729520}
   AvailableShipParts: {fileID: 8514422417705718907}
+--- !u!114 &2834492746332841537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920978506075354937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5c4d1a9aea8884b962dfc17bb39d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchShifting: 0.1
+  sounds:
+  - {fileID: 8300000, guid: 98a572ab888fc1042bd319f24648a344, type: 3}
+  - {fileID: 8300000, guid: a6798334933762046805cfdf20ac213b, type: 3}
+  - {fileID: 8300000, guid: ee299e08b6643fd4e9075fd7907756f3, type: 3}
+  - {fileID: 8300000, guid: 79830b67e52db4e4d924fdcbcf18bd11, type: 3}
+--- !u!114 &8756364579805876912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920978506075354937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5c4d1a9aea8884b962dfc17bb39d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchShifting: 0.1
+  sounds:
+  - {fileID: 8300000, guid: f63dc49341e8f9a4f8eac0986470052c, type: 3}
+  - {fileID: 8300000, guid: 552298476fb08b94b91f3b629f0b1912, type: 3}
+  - {fileID: 8300000, guid: ad4177c89fda5cb42a9d1561a7f9692d, type: 3}
+--- !u!114 &5640140295756221349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920978506075354937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862d4bb1415c347e8a991a69ce553467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShipControls: {fileID: 6545045229369729520}
 --- !u!1 &1737638810606222387
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InstantiatedShipPart: {fileID: 0}
   PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
     type: 3}
 --- !u!1 &2307453162944276753
@@ -459,6 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InstantiatedShipPart: {fileID: 0}
   PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
     type: 3}
 --- !u!1 &4161772068318829220
@@ -660,6 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294ae37a639314460aa5e86afa8312d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InstantiatedShipPart: {fileID: 0}
   PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
     type: 3}
 --- !u!1 &5558961080646777312

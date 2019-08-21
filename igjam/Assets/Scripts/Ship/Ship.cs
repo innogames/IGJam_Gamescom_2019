@@ -4,9 +4,14 @@ using UnityEngine;
 using Zenject;
 
 public class Ship : MonoBehaviour {
+
+    public SFX assignAlienSFX;
+    public SFX pushOutAlienSFX;
+
     [HideInInspector ()] public Rigidbody2D body;
 
     [HideInInspector ()] public List<PartFixture> partFixtures = new List<PartFixture> ();
+    [HideInInspector ()] public List<ShipPartUI> aliens = new List<ShipPartUI> ();
 
     // already to the ship
     private SignalBus _signalBus;
@@ -21,6 +26,10 @@ public class Ship : MonoBehaviour {
                 var viewSlot = slotFixture.gameObject.GetComponent<ShipSlotView> ();
                 AddControl (slotFixture.part, viewSlot.SlotId);
             }
+        }
+        foreach (ShipPartUI alien in GetComponentsInChildren<ShipPartUI> ()) {
+            alien.CreateActualAlien ();
+            aliens.Add (alien);
         }
 
         _signalBus = signalBus;
@@ -49,13 +58,15 @@ public class Ship : MonoBehaviour {
             // SHOULD POP OUT THIS ALIEN YO !! 
             // Destroy(partFixtures[slotId].part.gameObject); 
             partFixtures[slotId].Pop ();
+            pushOutAlienSFX.Play ();
         }
 
         if (part != null) {
-            part.ConnectToShip ();
+            part.DisablePhysics ();
             partFixtures[slotId].part = part;
+            assignAlienSFX.Play ();
         } else {
-        
+
         }
     }
 
@@ -66,4 +77,15 @@ public class Ship : MonoBehaviour {
     }
 
     public void SelectNextControl () { }
+
+    public void PickUpPartFromSpace (ShipPart part) {
+        // add part to aliens list ... 
+        for (int i = 0; i < aliens.Count; i++) {
+            if (aliens[i].IsEmpty ()) {
+                aliens[i].InstantiatedShipPart = part;
+                part.DisablePhysics ();
+                return;
+            }
+        }
+    }
 }
