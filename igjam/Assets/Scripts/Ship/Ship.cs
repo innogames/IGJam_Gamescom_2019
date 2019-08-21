@@ -4,6 +4,10 @@ using UnityEngine;
 using Zenject;
 
 public class Ship : MonoBehaviour {
+
+    public SFX assignAlienSFX;
+    public SFX pushOutAlienSFX;
+
     [HideInInspector ()] public Rigidbody2D body;
 
     [HideInInspector ()] public List<PartFixture> partFixtures = new List<PartFixture> ();
@@ -54,11 +58,13 @@ public class Ship : MonoBehaviour {
             // SHOULD POP OUT THIS ALIEN YO !! 
             // Destroy(partFixtures[slotId].part.gameObject); 
             partFixtures[slotId].Pop ();
+            pushOutAlienSFX.Play ();
         }
 
         if (part != null) {
             part.DisablePhysics ();
             partFixtures[slotId].part = part;
+            assignAlienSFX.Play ();
         } else {
 
         }
