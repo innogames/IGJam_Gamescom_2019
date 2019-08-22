@@ -23,6 +23,9 @@ public class SFX : MonoBehaviour {
     }
 
     public void Play () {
+
+        if (Uhh.Offscreen (transform.position, 1f)) return;
+
         if (sounds.Count == 0) return;
         if (source == null) return;
 
