@@ -673,7 +673,6 @@ GameObject:
   - component: {fileID: 6968077219899679842}
   - component: {fileID: 6968077219899679845}
   - component: {fileID: 6429378517140328838}
-  - component: {fileID: 2782956744893701460}
   m_Layer: 5
   m_Name: Tutorial
   m_TagString: Untagged
@@ -781,19 +780,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2782956744893701460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968077219899679844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0735d155cd4b4cab8b3d2d1340e8619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RestartObject: {fileID: 6968077219550870819}
 --- !u!1 &6968077220280159517
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +871,7 @@ GameObject:
   - component: {fileID: 6968077220297730224}
   - component: {fileID: 6968077220297730238}
   - component: {fileID: 6968077220297730225}
+  - component: {fileID: 915121721}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -960,6 +947,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &915121721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6968077220297730227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0735d155cd4b4cab8b3d2d1340e8619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RestartObject: {fileID: 6968077219550870819}
 --- !u!1 &6968077220439605629
 GameObject:
   m_ObjectHideFlags: 0
