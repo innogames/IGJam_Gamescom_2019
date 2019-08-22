@@ -31,7 +31,8 @@ public class ShipConfigurationView : MonoBehaviour
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
 		DeactivateUI();
-		
+		_state = ConfigurationState.SelectControlSlot;
+
 	}
 
 	private void DeactivateUI()
@@ -45,10 +46,7 @@ public class ShipConfigurationView : MonoBehaviour
 	private void ActivateUI()
 	{
 		this.enabled = true;
-		_cycleAliens = true;
-		_cycleSlots = true;
-		StartCoroutine(CycleAliens());
-		StartCoroutine(CycleSlots());
+		StartSelectSlots();	
 	}
 
 
@@ -79,18 +77,51 @@ public class ShipConfigurationView : MonoBehaviour
 	{	 
 		if (Input.GetButtonUp("A"))
 		{
-			ShipControls.ActivateSelectedSlot();
-			AvailableShipParts.ActivateSelectedSlot();
-			_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "A"));
+			if (_state == ConfigurationState.SelectControlSlot)
+			{
+				StartSelectAliens();
+			}
+			else
+			{
+				AvailableShipParts.ActivateSelectedSlot();
+				_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "A"));
+				StartSelectSlots();
+			}
 			
 		}
 		if (Input.GetButtonUp("B"))
 		{
-			ShipControls.ActivateSelectedSlot();
-			AvailableShipParts.ActivateSelectedSlot();
-			_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "B"));
+			if (_state == ConfigurationState.SelectControlSlot)
+			{
+				StartSelectAliens();
+			}
+			else
+			{
+				AvailableShipParts.ActivateSelectedSlot();
+				_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "B"));
+				StartSelectSlots();
+			}
 		}
+		
+		
 	}
 
-	
+	private void StartSelectAliens()
+	{
+		StopAllCoroutines();
+		ShipControls.ActivateSelectedSlot();
+		_state = ConfigurationState.SelectItem;
+		_cycleSlots = false;
+		_cycleAliens = true;
+		StartCoroutine(CycleAliens());
+	}
+
+	private void StartSelectSlots()
+	{
+		StopAllCoroutines();
+		_cycleAliens = true;
+		_cycleSlots = true;
+		_state = ConfigurationState.SelectControlSlot;
+		StartCoroutine(CycleSlots());
+	}
 }

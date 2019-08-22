@@ -15,6 +15,15 @@ public class ShipSlotView :  SelectableControl
 	void Init(SignalBus signalBus)
 	{
 		_signalBus = signalBus;
+		_signalBus.Subscribe<SystemSignal.Ship.PartAttached>(CheckAttachedPart);
+	}
+
+	private void CheckAttachedPart(SystemSignal.Ship.PartAttached signal)
+	{
+		if (signal.SlotId == SlotId)
+		{
+			AnimationControl.SetTrigger("Hide");
+		}
 	}
 
 	public override void Select()
@@ -29,7 +38,7 @@ public class ShipSlotView :  SelectableControl
 
 	public override void Activate()
 	{
-		AnimationControl.SetTrigger("Hide");
+		
 		_signalBus.Fire(new SystemSignal.Ship.SlotSelected(SlotId));
 	}
 }
