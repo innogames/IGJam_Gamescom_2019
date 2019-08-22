@@ -19,8 +19,8 @@ public class Ship : MonoBehaviour {
     // already to the ship
     private SignalBus _signalBus;
 
-    void Awake() {
-        
+    void Awake () {
+
     }
 
     [Inject]
@@ -33,8 +33,7 @@ public class Ship : MonoBehaviour {
 
     }
 
-    void Start()
-    {
+    void Start () {
         foreach (PartFixture slotFixture in GetComponentsInChildren<PartFixture> ()) {
             partFixtures.Add (slotFixture);
             if (slotFixture.part != null) {
@@ -75,8 +74,8 @@ public class Ship : MonoBehaviour {
     }
 
     void JustAddControl (ShipPart part, int slotId) {
-
         if (part != null) {
+            part.VOICE.ForceSay (part.VOICE.assign);
             part.DisablePhysics ();
             partFixtures[slotId].part = part;
             assignAlienSFX.Play ();
@@ -123,5 +122,16 @@ public class Ship : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    public void RandomTalk () {
+        int n = partFixtures.Count;
+        int j = Random.Range (0, n);
+        for (int i = 0; i < n; i++) {
+            int id = (i + j) % n;
+            if (partFixtures[id].part != null) {
+                partFixtures[id].part.VOICE.Say (partFixtures[id].part.VOICE.hoverOver);
+            }
+        }
     }
 }

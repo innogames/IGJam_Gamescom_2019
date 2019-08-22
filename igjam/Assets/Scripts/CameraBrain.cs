@@ -11,7 +11,7 @@ public class CameraBrain : MonoBehaviour {
     // i'm sorry for creating static variables. 
     // i just couldn't deal 
     public static bool zoomedIn = false;
-    public static Vector2 shipposition;
+    public static Ship ship;
 
     Vector2 startpos;
 
@@ -21,7 +21,7 @@ public class CameraBrain : MonoBehaviour {
 
     [Inject]
     void Init (SignalBus signalBus) {
-        cam = GetComponent<Camera>();
+        cam = GetComponent<Camera> ();
         startpos = transform.position;
         _signalBus = signalBus;
         _signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate> (ActivateUI);
@@ -32,7 +32,7 @@ public class CameraBrain : MonoBehaviour {
     }
 
     void DeactivateUI () { zoomedIn = false; }
-    void ActivateUI () { zoomedIn = true; shipposition = FindObjectOfType<Ship> ().transform.position; }
+    void ActivateUI () { zoomedIn = true; ship = FindObjectOfType<Ship> (); }
 
     void Update () {
 
@@ -41,7 +41,7 @@ public class CameraBrain : MonoBehaviour {
 
         if (zoomedIn) {
             targetzoom = buildzoomlevel;
-            targetpos = shipposition;
+            targetpos = ship.transform.position;
         }
 
         cam.orthographicSize = Mathf.Lerp (cam.orthographicSize, targetzoom, .1f);

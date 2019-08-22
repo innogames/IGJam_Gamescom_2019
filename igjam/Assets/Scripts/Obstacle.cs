@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour {
     void Awake () {
         body = GetComponent<Rigidbody2D> ();
         startpos = transform.position;
-        transform.rotation = Random.rotationUniform; 
+        transform.rotation = Random.rotationUniform;
     }
 
     void Update () {
@@ -42,6 +42,7 @@ public class Obstacle : MonoBehaviour {
 
             Ship s = subject.GetComponent<Ship> ();
             if (s != null) {
+                s.RandomTalk ();
                 // figure out if shielder is active on the ship, skip the collision if so. 
                 if (s.IsShieldedTowards (c.normal)) {
                     body.AddForceAtPosition (-away * selfbounce, c.point, ForceMode2D.Impulse);
@@ -55,6 +56,7 @@ public class Obstacle : MonoBehaviour {
             subject.AddForceAtPosition (away * pushaway, c.point, ForceMode2D.Impulse);
             body.AddForceAtPosition (-away * selfbounce, c.point, ForceMode2D.Impulse);
             bounceSFX.Play ();
+
         }
     }
 }
