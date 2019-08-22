@@ -8,6 +8,8 @@ public class PartFixture : MonoBehaviour {
 
     public Vector2 LOOKDIR { get { return Uhh.VectorFromAngle (transform.rotation.eulerAngles.z); } }
 
+    public float thrusterstability = 1;
+
     Ship ship;
 
     void Start () {
@@ -27,7 +29,7 @@ public class PartFixture : MonoBehaviour {
         if (part != null) {
             part.EnablePhysics ();
             part.body.AddForce (LOOKDIR * 5f, ForceMode2D.Impulse);
-            part.VOICE.Say(part.VOICE.popOut); 
+            part.VOICE.Say (part.VOICE.popOut);
         }
         part = null;
     }
