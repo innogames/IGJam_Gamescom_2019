@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Our alien operators due usually all controls at the same time. '
+  m_Text: 'Our alien operators usually use all controls at the same time. '
 --- !u!1 &6968077219412181450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1581,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You can press the green button any time to reassign alliens.
+  m_Text: You can press the green button any time to reassign aliens.
 --- !u!1 &6968077221441020292
 GameObject:
   m_ObjectHideFlags: 0
