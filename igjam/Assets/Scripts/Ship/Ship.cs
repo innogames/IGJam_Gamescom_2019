@@ -148,7 +148,7 @@ public class Ship : MonoBehaviour {
 
     void OnTriggerEnter2D (Collider2D col) {
         ShipPart sp = col.gameObject.GetComponent<ShipPart> ();
-        if (sp != null) {
+        if (sp != null && sp.CANBEPICKEDUP) {
 
             sp.VOICE.ForceSay (sp.VOICE.pickUp);
 

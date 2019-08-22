@@ -77,12 +77,18 @@ public class ShipPart : MonoBehaviour, IShipControl {
         // debug stuff: 
         if (Input.GetButton (button)) Activate ();
         else Deactivate ();
+
+        if (!CANBEPICKEDUP) pickupcooldown -= Time.deltaTime;
     }
+
+    public bool CANBEPICKEDUP { get { return pickupcooldown < 0; } }
+    float pickupcooldown;
 
     public virtual void EnablePhysics () {
         body.simulated = true;
         col.enabled = true;
         ship = null;
+        pickupcooldown = 1.5f;
     }
 
     public virtual void DisablePhysics () {
@@ -132,10 +138,10 @@ public class ShipPart : MonoBehaviour, IShipControl {
     void OnCollisionEnter2D (Collision2D col) {
         // Ship s = col.collider.gameObject.GetComponent<Ship> ();
         // if (s != null) {
-            // GET PICKED BACK UP AGAIN !! 
-            // Destroy (gameObject);
-            // VOICE.Say (voice.pickUp);
-            // s.PickUpPartFromSpace (this);       
+        // GET PICKED BACK UP AGAIN !! 
+        // Destroy (gameObject);
+        // VOICE.Say (voice.pickUp);
+        // s.PickUpPartFromSpace (this);       
         // }
     }
 
