@@ -38723,8 +38723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipControls: {fileID: 7829612072130484755}
   AvailableShipParts: {fileID: 4635817365026172824}
-  SlotCycleDelay: 0.2
-  AlienCycleDelay: 0.5
+  SlotCycleDelay: 0.6
+  AlienCycleDelay: 0.4
 --- !u!114 &1003335414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41146,10 +41146,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3926282662192752347}
     m_Modifications:
-    - target: {fileID: 1238397873012254, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
-      propertyPath: m_Name
-      value: SpaceShip
-      objectReference: {fileID: 0}
     - target: {fileID: 4973992811193126, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.019999728
@@ -41193,6 +41189,10 @@ PrefabInstance:
     - target: {fileID: 4973992811193126, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238397873012254, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
+      propertyPath: m_Name
+      value: SpaceShip
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
