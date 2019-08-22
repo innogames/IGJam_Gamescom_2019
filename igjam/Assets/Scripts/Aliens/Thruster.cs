@@ -8,7 +8,6 @@ public class Thruster : ShipPart {
     public float force;
     private SpriteRenderer _shownView;
 
-    public float Stablity = 0.5f;
 
     public Sprite PinkThruster;
     public Sprite BlueThruster;
@@ -23,8 +22,8 @@ public class Thruster : ShipPart {
     public override void Activate () {
         base.Activate ();
         Vector2 dir = -Uhh.VectorFromAngle (ROT);
-        ship.body.AddForceAtPosition (LOOKDIR * force * (1 - Stablity), POS, ForceMode2D.Force);
-        ship.body.AddForce (LOOKDIR * force * Stablity, ForceMode2D.Force);
+        ship.body.AddForceAtPosition (LOOKDIR * force * (1 - fixture.thrusterstability), POS, ForceMode2D.Force);
+        ship.body.AddForce (LOOKDIR * force * fixture.thrusterstability, ForceMode2D.Force);
         sfx.Play ();
         ShowEffects ();
         VOICE.Say (voice.thruster);

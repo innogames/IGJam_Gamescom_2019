@@ -25,6 +25,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
     }
 
     public Ship ship;
+    protected PartFixture fixture;
     public Animator SpeechBubble;
 
     private SignalBus _signalBus;
@@ -54,8 +55,6 @@ public class ShipPart : MonoBehaviour, IShipControl {
         }
 
     }
-
-     
 
     private void EnableObject () {
         enabled = true;
@@ -110,6 +109,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public void TalkWithShip (Ship ship, PartFixture fixture) {
         this.ship = ship;
+        this.fixture = fixture;
 
         Vector2 pos = fixture.transform.position;
         pos -= LOOKDIR * .5f;
@@ -130,14 +130,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
     }
 
     void OnCollisionEnter2D (Collision2D col) {
-        Ship s = col.collider.gameObject.GetComponent<Ship> ();
-        if (s != null) {
+        // Ship s = col.collider.gameObject.GetComponent<Ship> ();
+        // if (s != null) {
             // GET PICKED BACK UP AGAIN !! 
             // Destroy (gameObject);
-            VOICE.Say (voice.pickUp);
-            s.PickUpPartFromSpace (this);
-
-        }
+            // VOICE.Say (voice.pickUp);
+            // s.PickUpPartFromSpace (this);       
+        // }
     }
 
     public void ShowBubble () {

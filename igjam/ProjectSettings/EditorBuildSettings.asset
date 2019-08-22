@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FriedrichScene.unity
-    guid: 87fdcaf2b8ed947329f76e5c1f8d2ae7
-  - enabled: 1
-    path: Assets/Scenes/DittosScene.unity
-    guid: 8eb87ef214ccb6140abfc6c3726a5310
+    path: Assets/Scenes/MainGame.unity
+    guid: 821e70021460f46dcaad3b78ece1d4f9
   m_configObjects: {}

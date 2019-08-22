@@ -10,6 +10,7 @@ public class Ship : MonoBehaviour {
     public SFX openHatchSFX;
     public SFX assignEmptySFX;
     public SFX moveAlienSelectionSFX;
+    public SFX pickupAlienSFX;
 
     [HideInInspector ()] public Rigidbody2D body;
 
@@ -18,10 +19,6 @@ public class Ship : MonoBehaviour {
 
     // already to the ship
     private SignalBus _signalBus;
-
-    void Awake () {
-
-    }
 
     [Inject]
     void Init (SignalBus signalBus) {
@@ -80,6 +77,8 @@ public class Ship : MonoBehaviour {
             partFixtures[slotId].part = part;
             assignAlienSFX.Play ();
             part.ShowBubble ();
+        } else {
+            assignEmptySFX.Play ();
         }
     }
 
@@ -97,6 +96,7 @@ public class Ship : MonoBehaviour {
             if (aliens[i].IsEmpty ()) {
                 aliens[i].InstantiatedShipPart = part;
                 part.DisablePhysics ();
+            
                 return;
             }
         }
@@ -132,6 +132,28 @@ public class Ship : MonoBehaviour {
             if (partFixtures[id].part != null) {
                 partFixtures[id].part.VOICE.Say (partFixtures[id].part.VOICE.hoverOver);
             }
+        }
+    }
+
+    public void Teleport (Vector2 newpos, float rotation) {
+        body.position = newpos;
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0;
+        body.rotation = rotation;
+
+        Vector2 dir = Uhh.VectorFromAngle (rotation - 90);
+        float force = 2;
+        body.AddForce (dir * force, ForceMode2D.Impulse);
+    }
+
+    void OnTriggerEnter2D (Collider2D col) {
+        ShipPart sp = col.gameObject.GetComponent<ShipPart> ();
+        if (sp != null) {
+
+            sp.VOICE.ForceSay (sp.VOICE.pickUp);
+
+            PickUpPartFromSpace (sp);
+
         }
     }
 }
