@@ -130,14 +130,13 @@ public class ShipPart : MonoBehaviour, IShipControl {
     }
 
     void OnCollisionEnter2D (Collision2D col) {
-        Ship s = col.collider.gameObject.GetComponent<Ship> ();
-        if (s != null) {
+        // Ship s = col.collider.gameObject.GetComponent<Ship> ();
+        // if (s != null) {
             // GET PICKED BACK UP AGAIN !! 
             // Destroy (gameObject);
-            VOICE.Say (voice.pickUp);
-            s.PickUpPartFromSpace (this);
-
-        }
+            // VOICE.Say (voice.pickUp);
+            // s.PickUpPartFromSpace (this);       
+        // }
     }
 
     public void ShowBubble () {

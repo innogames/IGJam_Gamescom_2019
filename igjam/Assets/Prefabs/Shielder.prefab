@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 1328581806265404371}
   - component: {fileID: 2803414918574368554}
   - component: {fileID: 2999968731223816877}
+  - component: {fileID: 4352898681473124753}
   m_Layer: 0
   m_Name: Shielder
   m_TagString: Untagged
@@ -725,6 +726,7 @@ MonoBehaviour:
   body: {fileID: 0}
   button: A
   Generator: {fileID: 2850657569876708867}
+  voice: {fileID: 0}
   PinkShielder: {fileID: 21300000, guid: 81658144a6f9bab4d96b91f035ae4e4f, type: 3}
   BlueShielder: {fileID: 21300000, guid: 4630d7ac7d18e274b8d4624820cd68ce, type: 3}
   shieldingtimer: 0
@@ -921,6 +923,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &4352898681473124753
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663518002534884705}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.045
 --- !u!1 &6078967339972377521
 GameObject:
   m_ObjectHideFlags: 0
