@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3411298569597476182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3411298569597476180}
+  - component: {fileID: 3411298569597476181}
+  m_Layer: 0
+  m_Name: AlienVoice 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3411298569597476180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411298569597476182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5495146, y: -6.8455467, z: -0.1328125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3411298569597476181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3411298569597476182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfaed709eb216c64789145c55468598e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverOver:
+  - {fileID: 8300000, guid: a38dfcb4e83a4fd40ac671f5ceb81344, type: 3}
+  - {fileID: 8300000, guid: b98a88b9721ccff43b8620c89739931e, type: 3}
+  - {fileID: 8300000, guid: ab1ea0ab3ed1d77489c8a22a6407a63f, type: 3}
+  - {fileID: 8300000, guid: b53799f8b2a6c764bbb9aff962b863e3, type: 3}
+  pickUp:
+  - {fileID: 8300000, guid: ad5b7392d197f1b44a6cc6d006b32ea0, type: 3}
+  - {fileID: 8300000, guid: a50285beb0a05b848b4893e7e8ac7cd1, type: 3}
+  - {fileID: 8300000, guid: b5b563e037997ac4c89cb5c9d04828d1, type: 3}
+  popOut:
+  - {fileID: 8300000, guid: f87db729c15d10d47abaf8ed6b3e8554, type: 3}
+  - {fileID: 8300000, guid: 1493d3f027d2e9744845bde0e0df224e, type: 3}
+  assign:
+  - {fileID: 8300000, guid: 1a4e7cae90e3c4e4bae8d6b2368fc828, type: 3}
+  - {fileID: 8300000, guid: a8009c8b32f6cc3449a98844a05c6226, type: 3}
+  shield:
+  - {fileID: 8300000, guid: 9e32f818fd7c10c48b4b0196190edf1d, type: 3}
+  - {fileID: 8300000, guid: 93bda65fdfce9ba438180c330b5428f6, type: 3}
+  - {fileID: 8300000, guid: 3e99542bb65c55b43be0c3cd76cd6eaf, type: 3}
+  thruster:
+  - {fileID: 8300000, guid: 1605a08b4db8e864eb96cb157be3405a, type: 3}
+  - {fileID: 8300000, guid: c15db4d3d4b63454995b8d692b90fec3, type: 3}
+  - {fileID: 8300000, guid: ac43f2010c69e4d4a8d857d90e58da06, type: 3}
