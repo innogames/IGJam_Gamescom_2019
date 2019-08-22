@@ -134,4 +134,15 @@ public class Ship : MonoBehaviour {
             }
         }
     }
+
+    public void Teleport (Vector2 newpos, float rotation) {
+        body.position = newpos;
+        body.velocity = Vector2.zero;
+        body.angularVelocity = 0;
+        body.rotation = rotation;
+
+        Vector2 dir = Uhh.VectorFromAngle (rotation - 90);
+        float force = 2;
+        body.AddForce (dir * force, ForceMode2D.Impulse);
+    }
 }
