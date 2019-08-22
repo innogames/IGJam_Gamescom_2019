@@ -15,9 +15,14 @@ public class ShipConfigurationView : MonoBehaviour
 	public ListUI ShipControls;
 	public ListUI AvailableShipParts;
 
+	public float SlotCycleDelay = 0.2f;
+	public float AlienCycleDelay = 0.5f;
+
 	private ConfigurationState _state;
 	private ListUI _activeListView;
 	private SignalBus _signalBus;
+	private bool _cycleAliens;
+	private bool _cycleSlots;
 
 	[Inject]
 	void Init(SignalBus signalBus)
@@ -25,7 +30,6 @@ public class ShipConfigurationView : MonoBehaviour
 		_signalBus = signalBus;
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
-		ActivateShipSlots();
 		DeactivateUI();
 		
 	}
@@ -33,63 +37,60 @@ public class ShipConfigurationView : MonoBehaviour
 	private void DeactivateUI()
 	{
 		this.enabled = false;
+		_cycleAliens = false;
+		_cycleSlots = false;
+		StopAllCoroutines();
 	}
 
 	private void ActivateUI()
 	{
 		this.enabled = true;
-		ActivateShipSlots();
+		_cycleAliens = true;
+		_cycleSlots = true;
+		StartCoroutine(CycleAliens());
+		StartCoroutine(CycleSlots());
+	}
+
+
+	
+	private IEnumerator CycleSlots()
+	{
+		float slotDelay = SlotCycleDelay;
+		while (_cycleSlots)
+		{
+			yield return new WaitForSeconds(slotDelay);
+			ShipControls.SelectNextSlot();
+			yield return null;
+		}
+	}
+	
+	private IEnumerator CycleAliens()
+	{
+		float slotDelay = AlienCycleDelay;
+		while (_cycleAliens)
+		{
+			yield return new WaitForSeconds(slotDelay);
+			AvailableShipParts.SelectNextSlot();
+			yield return null;
+		}
 	}
 
 	void Update()
-	{
-		if (_activeListView == null)
-		{
-			return;
-		}
-
-		 
+	{	 
 		if (Input.GetButtonUp("A"))
 		{
-			_activeListView.SelectNextSlot();
+			ShipControls.ActivateSelectedSlot();
+			AvailableShipParts.ActivateSelectedSlot();
+			_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "A"));
+			
 		}
 		if (Input.GetButtonUp("B"))
 		{
-			_activeListView.ActivateSelectedSlot();
-			switch (_state)
-			{
-				case ConfigurationState.SelectControlSlot:
-					ActivatePartSelection();
-					break; 
-				case ConfigurationState.SelectItem:
-					ActivateShipSlots();
-					break;
-			}
-
+			ShipControls.ActivateSelectedSlot();
+			AvailableShipParts.ActivateSelectedSlot();
+			_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "B"));
 		}
 	}
 
-	private void ActivatePartSelection()
-	{
-		if (_activeListView!=null)
-		{
-			_activeListView.Deactivate();
-		}
-		_state = ConfigurationState.SelectItem;
-		_activeListView = AvailableShipParts;
-		_activeListView.Activate();
-	}
-
-	private void ActivateShipSlots()
-	{
-		if (_activeListView!=null)
-		{
-			_activeListView.Deactivate();
-		}
-		
-		_state = ConfigurationState.SelectControlSlot;
-		_activeListView = ShipControls;
-		_activeListView.Activate();
-		
-	}
+	
 }
