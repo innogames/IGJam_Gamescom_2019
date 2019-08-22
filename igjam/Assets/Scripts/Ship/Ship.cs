@@ -7,9 +7,7 @@ public class Ship : MonoBehaviour {
 
     public SFX assignAlienSFX;
     public SFX pushOutAlienSFX;
-    public SFX openHatchSFX;
     public SFX assignEmptySFX;
-    public SFX moveAlienSelectionSFX;
     public SFX pickupAlienSFX;
 
     [HideInInspector ()] public Rigidbody2D body;
@@ -122,7 +120,7 @@ public class Ship : MonoBehaviour {
             }
         }
         return false;
-    }
+    } 
 
     public void RandomTalk () {
         int n = partFixtures.Count;
