@@ -27,7 +27,7 @@ public class Thruster : ShipPart {
         ship.body.AddForce (LOOKDIR * force * Stablity, ForceMode2D.Force);
         sfx.Play ();
         ShowEffects ();
-        voice.Say (voice.thruster);
+        VOICE.Say (voice.thruster);
     }
 
     public override void AssignButton (string newControlName) {

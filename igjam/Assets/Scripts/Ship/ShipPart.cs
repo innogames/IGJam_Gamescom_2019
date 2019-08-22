@@ -35,8 +35,8 @@ public class ShipPart : MonoBehaviour, IShipControl {
     public string button = "A";
     public AlienGenerator Generator;
 
-
     public AlienVoice voice;
+    public AlienVoice VOICE { get { if (voice == null) voice = VoiceContainer.GetVoiceSetup (); return voice; } }
 
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
@@ -55,10 +55,7 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     }
 
-    void Start() {
-                voice = VoiceContainer.GetVoiceSetup ();
-
-    }
+     
 
     private void EnableObject () {
         enabled = true;
@@ -137,7 +134,9 @@ public class ShipPart : MonoBehaviour, IShipControl {
         if (s != null) {
             // GET PICKED BACK UP AGAIN !! 
             // Destroy (gameObject);
+            VOICE.Say (voice.pickUp);
             s.PickUpPartFromSpace (this);
+
         }
     }
 

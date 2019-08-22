@@ -31,6 +31,7 @@ public class Shielder : ShipPart {
         // GROW !! 
         shieldingtimer = 0.25f;
         ShowEffects ();
+        VOICE.Say (voice.shield);
     }
 
     public override void AssignButton (string newControlName) {
