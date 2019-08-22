@@ -16102,11 +16102,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198076123, guid: c3d33354d0eeb47a484371d1c64735e4, type: 3}
+    - target: {fileID: 2017641769, guid: c3d33354d0eeb47a484371d1c64735e4, type: 3}
       propertyPath: cameraGO
       value: 
       objectReference: {fileID: 519420028}
-    - target: {fileID: 83998045, guid: c3d33354d0eeb47a484371d1c64735e4, type: 3}
+    - target: {fileID: 2017641768, guid: c3d33354d0eeb47a484371d1c64735e4, type: 3}
       propertyPath: cameraGO
       value: 
       objectReference: {fileID: 519420028}
