@@ -38560,6 +38560,7 @@ GameObject:
   - component: {fileID: 1003335414}
   - component: {fileID: 7919639462731718404}
   - component: {fileID: 866926896435693624}
+  - component: {fileID: 8392530228661466648}
   m_Layer: 0
   m_Name: GraficShip
   m_TagString: Untagged
@@ -38687,7 +38688,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4231989835992403162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -38763,6 +38764,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pitchShifting: 0
   sounds: []
+--- !u!60 &8392530228661466648
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4231989835992403162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.9844832, y: -1.1490421}
+      - {x: 2.8229795, y: -1.8001919}
+      - {x: 0.38666868, y: -2.364149}
+      - {x: -2.0364056, y: -2.4030895}
+      - {x: -3.061256, y: -1.2915821}
+      - {x: -4.693281, y: -1.2180271}
+      - {x: -5.5858297, y: 0.25371742}
+      - {x: -5.4390783, y: 2.3260612}
+      - {x: -4.1763015, y: 3.802927}
+      - {x: -1.4243121, y: 3.8316479}
+      - {x: -0.80783415, y: 3.1797934}
+      - {x: 1.3714862, y: 3.0601416}
+      - {x: 2.3882213, y: 3.6304226}
+      - {x: 4.107516, y: 3.5151463}
+      - {x: 5.541246, y: 2.33175}
+      - {x: 5.4687524, y: 0.39035416}
 --- !u!1 &4279348166905616885
 GameObject:
   m_ObjectHideFlags: 0
