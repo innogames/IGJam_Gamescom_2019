@@ -793,8 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InstantiatedShipPart: {fileID: 0}
-  PrefabToInstantiate: {fileID: 7872197171666061870, guid: 98b0b209d8fe70342bfdb4f73285db47,
-    type: 3}
+  PrefabToInstantiate: {fileID: 0}
 --- !u!114 &1940057734200065339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41146,6 +41145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3926282662192752347}
     m_Modifications:
+    - target: {fileID: 1238397873012254, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
+      propertyPath: m_Name
+      value: SpaceShip
+      objectReference: {fileID: 0}
     - target: {fileID: 4973992811193126, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.019999728
@@ -41189,10 +41192,6 @@ PrefabInstance:
     - target: {fileID: 4973992811193126, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1238397873012254, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
-      propertyPath: m_Name
-      value: SpaceShip
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f140da8549f76094fb39ef4d1efe588a, type: 3}
