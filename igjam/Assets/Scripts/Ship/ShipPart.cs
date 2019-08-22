@@ -34,7 +34,10 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public string button = "A";
     public AlienGenerator Generator;
-    
+
+
+    public AlienVoice voice;
+
     [Inject]
     void Init (SignalBus signalBus, GameModel model) {
         body = GetComponent<Rigidbody2D> ();
@@ -49,6 +52,12 @@ public class ShipPart : MonoBehaviour, IShipControl {
         foreach (EffectBase e in GetComponentsInChildren<EffectBase> ()) {
             effects.Add (e);
         }
+
+    }
+
+    void Start() {
+                voice = VoiceContainer.GetVoiceSetup ();
+
     }
 
     private void EnableObject () {
@@ -134,8 +143,8 @@ public class ShipPart : MonoBehaviour, IShipControl {
 
     public void ShowBubble () {
         SpeechBubble.SetTrigger ("Show");
-        Generator.GenerateAlien();
-        
+        Generator.GenerateAlien ();
+
     }
 
     List<EffectBase> effects = new List<EffectBase> ();

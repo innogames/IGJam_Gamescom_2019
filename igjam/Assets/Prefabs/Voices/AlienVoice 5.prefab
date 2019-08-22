@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1770242659829453798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1770242659829453816}
+  - component: {fileID: 1770242659829453817}
+  m_Layer: 0
+  m_Name: AlienVoice 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1770242659829453816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770242659829453798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5495146, y: -6.8455467, z: -0.1328125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770242659829453817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770242659829453798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfaed709eb216c64789145c55468598e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverOver:
+  - {fileID: 8300000, guid: 99ac1885e2c31d34e92bb5e71df739cb, type: 3}
+  - {fileID: 8300000, guid: e67e386c468d5e14087ae46821852290, type: 3}
+  - {fileID: 8300000, guid: 7bf9ac7ad577f4a4592450e9cd4c3bf4, type: 3}
+  - {fileID: 8300000, guid: bc68cb83545723b419e8a645c9b7830c, type: 3}
+  - {fileID: 8300000, guid: 0ce027eccfd6c364392a6f0530ca7044, type: 3}
+  pickUp:
+  - {fileID: 8300000, guid: 475068fcc2ee1d444ab0bb263409aa5f, type: 3}
+  - {fileID: 8300000, guid: f1e480846d8e94546957bf4be1231092, type: 3}
+  - {fileID: 8300000, guid: 1b155fcbdb7516e4bb494cb41e68c018, type: 3}
+  popOut:
+  - {fileID: 8300000, guid: c30a58d09615e644bbe00b57652b921c, type: 3}
+  - {fileID: 8300000, guid: 9d1c4ad47e7f17649b34c3c123125c1e, type: 3}
+  - {fileID: 8300000, guid: 31d2f5357d492bf40b7f382a002e714b, type: 3}
+  assign:
+  - {fileID: 8300000, guid: 66ac8e1b5bb0d9d4b9414d23a314cf63, type: 3}
+  - {fileID: 8300000, guid: 098b6274ee7e5d24e8831ebe1f64d377, type: 3}
+  - {fileID: 8300000, guid: 892abd5fffd659e40a762a6e78286c37, type: 3}
+  shield:
+  - {fileID: 8300000, guid: 14bd35724f52ebb4f9d7a66450326c65, type: 3}
+  - {fileID: 8300000, guid: a56a409bf7261274491798e8210d118a, type: 3}
+  - {fileID: 8300000, guid: b7ac68204eba87641b870cf5d5a5782e, type: 3}
+  thruster:
+  - {fileID: 8300000, guid: 09c5e0cd79401f54089d1e496e79017e, type: 3}
+  - {fileID: 8300000, guid: cfe53977ddfdf26459074d73a19db932, type: 3}
+  - {fileID: 8300000, guid: e0c7d07484bdf2045bfcc8a35bf553f8, type: 3}

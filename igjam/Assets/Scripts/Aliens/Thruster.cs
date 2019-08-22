@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Thruster : ShipPart {
+
     SFXLoop sfx;
     public float force;
     private SpriteRenderer _shownView;
@@ -12,7 +13,7 @@ public class Thruster : ShipPart {
     public Sprite PinkThruster;
     public Sprite BlueThruster;
 
-    public void  Awake () {
+    public void Awake () {
         sfx = GetComponent<SFXLoop> ();
         _shownView = GetComponent<SpriteRenderer> ();
     }
@@ -26,6 +27,7 @@ public class Thruster : ShipPart {
         ship.body.AddForce (LOOKDIR * force * Stablity, ForceMode2D.Force);
         sfx.Play ();
         ShowEffects ();
+        voice.Say (voice.thruster);
     }
 
     public override void AssignButton (string newControlName) {
