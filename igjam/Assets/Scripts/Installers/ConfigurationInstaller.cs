@@ -19,6 +19,10 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureControls.Deactivate>();
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Activate>();
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Deactivate>();
+
+		Container.DeclareSignal <SystemSignal.Ship.ConfigureControls>();
+		Container.DeclareSignal<SystemSignal.Ship.ConfigureSlots>();
+		
 		
 	}
 }

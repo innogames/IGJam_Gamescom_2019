@@ -195,6 +195,14 @@ public class SystemSignal
 				NewControlName = newControlName;
 			}
 		}
+
+		public class ConfigureControls
+		{
+		}
+
+		public class ConfigureSlots
+		{
+		}
 	}
 
 	public class GameMode

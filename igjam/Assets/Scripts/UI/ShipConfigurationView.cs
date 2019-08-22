@@ -109,6 +109,7 @@ public class ShipConfigurationView : MonoBehaviour
 	private void StartSelectAliens()
 	{
 		StopAllCoroutines();
+		_signalBus.Fire (new SystemSignal.Ship.ConfigureControls());
 		ShipControls.ActivateSelectedSlot();
 		_state = ConfigurationState.SelectItem;
 		_cycleSlots = false;
@@ -119,6 +120,7 @@ public class ShipConfigurationView : MonoBehaviour
 	private void StartSelectSlots()
 	{
 		StopAllCoroutines();
+		_signalBus.Fire (new SystemSignal.Ship.ConfigureSlots());
 		_cycleAliens = true;
 		_cycleSlots = true;
 		_state = ConfigurationState.SelectControlSlot;
