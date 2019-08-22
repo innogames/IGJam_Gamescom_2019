@@ -81,7 +81,10 @@ public class ShipPart : MonoBehaviour, IShipControl {
         if (!CANBEPICKEDUP) pickupcooldown -= Time.deltaTime;
     }
 
-    public bool CANBEPICKEDUP { get { return pickupcooldown <= 0; } }
+    public bool CANBEPICKEDUP
+    {
+        get { return true; }
+    }
     float pickupcooldown;
 
     public virtual void EnablePhysics () {
