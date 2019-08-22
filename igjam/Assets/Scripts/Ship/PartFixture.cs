@@ -29,6 +29,7 @@ public class PartFixture : MonoBehaviour {
         if (part != null) {
             part.EnablePhysics ();
             part.body.AddForce (LOOKDIR * 5f, ForceMode2D.Impulse);
+            part.body.AddTorque (Random.Range (-1f, 1f) * 2f, ForceMode2D.Impulse);
             part.VOICE.Say (part.VOICE.popOut);
         }
         part = null;
