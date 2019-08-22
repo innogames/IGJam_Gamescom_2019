@@ -12,7 +12,11 @@ public class ShipPartUI : SelectableControl {
     private SignalBus _signalBus;
     private GameModel _gameModel;
     private DiContainer _container;
-    
+
+    Color deselectedColor;
+    Color selectedColor;
+
+    SFX sfx;
 
     [Inject]
     void Init (SignalBus signalBus, GameModel model, DiContainer container) {
@@ -20,6 +24,10 @@ public class ShipPartUI : SelectableControl {
         _shownSprite = GetComponent<SpriteRenderer> ();
         _gameModel = model;
         _container = container;
+        sfx = GetComponent<SFX> ();
+        selectedColor = Color.white;
+        deselectedColor = Camera.main.backgroundColor;
+        _shownSprite.color = deselectedColor;
     }
 
     void Update () {
@@ -29,15 +37,16 @@ public class ShipPartUI : SelectableControl {
     }
 
     public override void Select () {
-        _shownSprite.color = Color.red;
+        _shownSprite.color = selectedColor;
+        sfx.Play ();
     }
 
     public override void Deselect () {
-        _shownSprite.color = Color.white;
+        _shownSprite.color = deselectedColor;
     }
 
     public override void Activate () {
-        _shownSprite.color = Color.green;
+        _shownSprite.color = deselectedColor;
         _signalBus.Fire (new SystemSignal.Ship.PartAttached (GetObject (), _gameModel.SelectedAttachmentSlotId));
         if (InstantiatedShipPart != null) InstantiatedShipPart = null;
         else if (PrefabToInstantiate != null) PrefabToInstantiate = null;
@@ -54,7 +63,7 @@ public class ShipPartUI : SelectableControl {
         if (PrefabToInstantiate != null) {
             InstantiatedShipPart = _container.InstantiatePrefabForComponent<ShipPart> (PrefabToInstantiate);
             PrefabToInstantiate = null;
-            InstantiatedShipPart.DisablePhysics(); 
+            InstantiatedShipPart.DisablePhysics ();
         }
     }
     public bool IsEmpty () {

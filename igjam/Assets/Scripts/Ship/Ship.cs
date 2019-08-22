@@ -18,11 +18,7 @@ public class Ship : MonoBehaviour {
 
     // already to the ship
     private SignalBus _signalBus;
-
-    void Awake () {
-
-    }
-
+ 
     [Inject]
     void Init (SignalBus signalBus) {
         body = GetComponent<Rigidbody2D> ();
@@ -80,6 +76,8 @@ public class Ship : MonoBehaviour {
             partFixtures[slotId].part = part;
             assignAlienSFX.Play ();
             part.ShowBubble ();
+        } else {
+            assignEmptySFX.Play ();
         }
     }
 
