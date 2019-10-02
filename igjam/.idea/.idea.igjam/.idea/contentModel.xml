@@ -553,6 +553,9 @@
             <e p="GameModel.cs" t="Include" />
             <e p="Signals.cs" t="Include" />
           </e>
+          <e p="Input" t="Include">
+            <e p="InputDispatcher.cs" t="Include" />
+          </e>
           <e p="Installers" t="Include">
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
