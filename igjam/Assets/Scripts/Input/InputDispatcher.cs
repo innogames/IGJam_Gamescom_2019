@@ -10,6 +10,7 @@ public class InputDispatcher : ITickable
 	private enum State
 	{
 		NotConfigured,
+		WaitingForConfiguration,
 		ModeConfigured,
 		LeftConfigured,
 		RightConfigured,
@@ -29,6 +30,14 @@ public class InputDispatcher : ITickable
 		_signalBus = signalBus;
 		_currentState = State.NotConfigured;
 		_keyCodes = Enum.GetValues(typeof(KeyCode)).Cast<KeyCode>();
+		
+		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureInput>(SwitchToConfigureMode);
+	}
+
+	private void SwitchToConfigureMode()
+	{
+		_currentState = State.WaitingForConfiguration;
+		_signalBus.TryUnsubscribe<SystemSignal.GameMode.ConfigureInput>(SwitchToConfigureMode);
 		_signalBus.Fire<SystemSignal.GameMode.ConfigureInput.ConfigureMode>();
 	}
 
@@ -37,6 +46,9 @@ public class InputDispatcher : ITickable
 		switch (_currentState)
 		{
 			case State.NotConfigured:
+				DispatchAnyInput();
+				break;
+			case State.WaitingForConfiguration:
 				ConfigureMode();
 				break;
 			case State.ModeConfigured: 
@@ -50,6 +62,15 @@ public class InputDispatcher : ITickable
 				break;
 		}
 
+	}
+
+	private void DispatchAnyInput()
+	{
+		KeyCode pressedKey;
+		if (GetAnyInput(out pressedKey))
+		{
+			_signalBus.Fire<InputSignal.AnyButton>();
+		}
 	}
 
 	private void ConfigureMode()
@@ -94,7 +115,7 @@ public class InputDispatcher : ITickable
 		code = KeyCode.A;
 		foreach (var keyCode in _keyCodes)
 		{
-			if (Input.GetKeyDown(keyCode))
+			if (Input.GetKeyDown(keyCode) && keyCode != KeyCode.Mouse0)
 			{
 				code = keyCode;
 				return true;

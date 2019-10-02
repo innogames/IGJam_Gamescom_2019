@@ -23,6 +23,10 @@ public class InputSignal
 	{
 		
 	}
+
+	public class AnyButton
+	{
+	}
 }
 
 public class SystemSignal

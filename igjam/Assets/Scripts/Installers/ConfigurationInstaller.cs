@@ -26,15 +26,18 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureMode>();
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureLeft>();
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureRight>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput>();
+		
 		
 		Container.DeclareSignal <SystemSignal.Ship.ConfigureControls>();
 		Container.DeclareSignal<SystemSignal.Ship.ConfigureSlots>();
 
-		Container.DeclareSignal<InputSignal.ModeSwitch>();
-		Container.DeclareSignal<InputSignal.LeftButton>();
-		Container.DeclareSignal<InputSignal.RightButton>();
-		Container.DeclareSignal<InputSignal.UnbufferedLeftButton>();
-		Container.DeclareSignal<InputSignal.UnbufferedRightButton>();
+		Container.DeclareSignal<InputSignal.ModeSwitch>().OptionalSubscriber();
+		Container.DeclareSignal<InputSignal.LeftButton>().OptionalSubscriber();
+		Container.DeclareSignal<InputSignal.RightButton>().OptionalSubscriber();
+		Container.DeclareSignal<InputSignal.UnbufferedLeftButton>().OptionalSubscriber();
+		Container.DeclareSignal<InputSignal.UnbufferedRightButton>().OptionalSubscriber();
+		Container.DeclareSignal<InputSignal.AnyButton>().OptionalSubscriber();
 		
 
 
