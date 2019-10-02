@@ -553,6 +553,9 @@
             <e p="GameModel.cs" t="Include" />
             <e p="Signals.cs" t="Include" />
           </e>
+          <e p="Input" t="Include">
+            <e p="InputDispatcher.cs" t="Include" />
+          </e>
           <e p="Installers" t="Include">
             <e p="ConfigurationInstaller.cs" t="Include" />
           </e>
@@ -578,6 +581,7 @@
           <e p="UI" t="Include">
             <e p="ControllerConfigurationView.cs" t="Include" />
             <e p="ControlText.cs" t="Include" />
+            <e p="InputConfigurationView.cs" t="Include" />
             <e p="ListUI.cs" t="Include" />
             <e p="SelectableControl.cs" t="Include" />
             <e p="ShipConfigurationView.cs" t="Include" />

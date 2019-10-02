@@ -19,7 +19,9 @@ public class Thruster : ShipPart {
 
     public override void Draw () { }
 
-    public override void Activate () {
+    public override void Activate ()
+    {
+        if (!gameObject.activeSelf ||ship == null) return;
         base.Activate ();
         Vector2 dir = -Uhh.VectorFromAngle (ROT);
         ship.body.AddForceAtPosition (LOOKDIR * force * (1 - fixture.thrusterstability), POS, ForceMode2D.Force);

@@ -7,6 +7,8 @@ public class ConfigurationInstaller : MonoInstaller
 {
 	public override void InstallBindings()
 	{
+		Container.Bind<ITickable>().To<InputDispatcher>().AsSingle().NonLazy();
+		
 		SignalBusInstaller.Install(Container);
 		Container.Bind<GameModel>().AsSingle();
 
@@ -20,9 +22,21 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Activate>();
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Deactivate>();
 
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.FullConfigured>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureMode>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureLeft>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureRight>();
+		
 		Container.DeclareSignal <SystemSignal.Ship.ConfigureControls>();
 		Container.DeclareSignal<SystemSignal.Ship.ConfigureSlots>();
+
+		Container.DeclareSignal<InputSignal.ModeSwitch>();
+		Container.DeclareSignal<InputSignal.LeftButton>();
+		Container.DeclareSignal<InputSignal.RightButton>();
+		Container.DeclareSignal<InputSignal.UnbufferedLeftButton>();
+		Container.DeclareSignal<InputSignal.UnbufferedRightButton>();
 		
-		
+
+
 	}
 }

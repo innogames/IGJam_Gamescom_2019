@@ -1,26 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class GameModeController : ListUI
 {
+	private SignalBus _signalBus;
 
-	public GameState CurrentState;
-	
-	// Start is called before the first frame update
-	void Start()
+	[Inject]
+	public void Init(SignalBus signalBus)
 	{
+		_signalBus = signalBus;
+		_signalBus.Subscribe<InputSignal.ModeSwitch>(SelectNextSlot);
 		SelectNextSlot();
 		
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		if (Input.GetButtonUp("X"))
-		{
-			SelectNextSlot();
-		}
 	}
 }
 

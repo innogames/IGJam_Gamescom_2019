@@ -26,6 +26,7 @@ public class Shielder : ShipPart {
     }
 
     public override void Activate () {
+        if (!gameObject.activeSelf) return;
         base.Activate ();
         sfx.Play ();
         // GROW !! 

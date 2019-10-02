@@ -1,162 +1,225 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ShipPart : MonoBehaviour, IShipControl {
-    public Vector2 POS {
-        get { return transform.position; }
-        set { transform.position = value; }
-    }
+public class ShipPart : MonoBehaviour, IShipControl
+{
+	public Vector2 POS
+	{
+		get { return transform.position; }
+		set { transform.position = value; }
+	}
 
-    public float ROT {
-        get { return transform.rotation.eulerAngles.z; }
-        set { transform.rotation = Uhh.Rotation (Uhh.VectorFromAngle (value)); }
-    }
+	public float ROT
+	{
+		get { return transform.rotation.eulerAngles.z; }
+		set { transform.rotation = Uhh.Rotation(Uhh.VectorFromAngle(value)); }
+	}
 
-    public Vector2 SCALE {
-        get { return transform.localScale; }
-        set { transform.localScale = value; }
-    }
+	public Vector2 SCALE
+	{
+		get { return transform.localScale; }
+		set { transform.localScale = value; }
+	}
 
-    public Vector2 LOOKDIR {
-        get { return -Uhh.VectorFromAngle (ROT); }
-    }
+	public Vector2 LOOKDIR
+	{
+		get { return -Uhh.VectorFromAngle(ROT); }
+	}
 
-    public Ship ship;
-    protected PartFixture fixture;
-    public Animator SpeechBubble;
+	public Ship ship;
+	protected PartFixture fixture;
+	public Animator SpeechBubble;
 
-    private SignalBus _signalBus;
+	private SignalBus _signalBus;
 
-    [HideInInspector ()] public Rigidbody2D body;
-    CircleCollider2D col;
+	[HideInInspector()] public Rigidbody2D body;
+	CircleCollider2D col;
 
-    public string button = "A";
-    public AlienGenerator Generator;
+	public string button = "A";
+	public AlienGenerator Generator;
 
-    public AlienVoice voice;
-    public AlienVoice VOICE { get { if (voice == null) voice = VoiceContainer.GetVoiceSetup (); return voice; } }
+	public AlienVoice voice;
 
-    [Inject]
-    void Init (SignalBus signalBus, GameModel model) {
-        body = GetComponent<Rigidbody2D> ();
-        col = GetComponent<CircleCollider2D> ();
-        _signalBus = signalBus;
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
-        _signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
-        if (model.ActiveState != typeof (FlyState)) {
-            enabled = false;
-        }
+	public AlienVoice VOICE
+	{
+		get
+		{
+			if (voice == null) voice = VoiceContainer.GetVoiceSetup();
+			return voice;
+		}
+	}
 
-        foreach (EffectBase e in GetComponentsInChildren<EffectBase> ()) {
-            effects.Add (e);
-        }
+	[Inject]
+	void Init(SignalBus signalBus, GameModel model)
+	{
+		body = GetComponent<Rigidbody2D>();
+		col = GetComponent<CircleCollider2D>();
+		_signalBus = signalBus;
+		_signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Activate>(EnableObject);
+		_signalBus.Subscribe<SystemSignal.GameMode.FlyMode.Deactivate>(DisableObject);
+		if (model.ActiveState != typeof(FlyState))
+		{
+			enabled = false;
+		}
 
-    }
+		foreach (EffectBase e in GetComponentsInChildren<EffectBase>())
+		{
+			effects.Add(e);
+		}
+	}
 
-    private void EnableObject () {
-        enabled = true;
-    }
+	private void LeftButtonReceived()
+	{
+		if (!gameObject.activeSelf)
+		{
+			return;
+		}
 
-    private void DisableObject () {
-        enabled = false;
-    }
+		if (button == "A")
+		{
+			Activate();
+		}
+		else
+		{
+			Deactivate();
+		}
+	}
 
-    private void OnDestroy () {
-        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Activate> (EnableObject);
-        _signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Deactivate> (DisableObject);
-    }
+	private void RightButtonReceived()
+	{
+		if (!gameObject.activeSelf)
+		{
+			return;
+		}
+		if (button == "B")
+		{
+			Activate();
+		}
+		else
+		{
+			Deactivate();
+		}
+	}
 
-    void Update () {
-        Draw ();
 
-        if (ship == null) return;
+	private void EnableObject()
+	{
+		enabled = true;
+		_signalBus.Subscribe<InputSignal.UnbufferedLeftButton>(LeftButtonReceived);
+		_signalBus.Subscribe<InputSignal.UnbufferedRightButton>(RightButtonReceived);
+	}
 
-        // debug stuff: 
-        if (Input.GetButton (button)) Activate ();
-        else Deactivate ();
+	private void DisableObject()
+	{
+		enabled = false;
+		_signalBus.TryUnsubscribe<InputSignal.UnbufferedLeftButton>(LeftButtonReceived);
+		_signalBus.TryUnsubscribe<InputSignal.UnbufferedRightButton>(RightButtonReceived);
+	}
 
-        if (!CANBEPICKEDUP) pickupcooldown -= Time.deltaTime;
-    }
+	private void OnDestroy()
+	{
+		if (_signalBus != null)
+		{
+			_signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Activate>(EnableObject);
+			_signalBus.TryUnsubscribe<SystemSignal.GameMode.FlyMode.Deactivate>(DisableObject);
+			_signalBus.TryUnsubscribe<InputSignal.UnbufferedLeftButton>(LeftButtonReceived);
+			_signalBus.TryUnsubscribe<InputSignal.UnbufferedRightButton>(RightButtonReceived);
+		}
 
-    public bool CANBEPICKEDUP
-    {
-        get { return true; }
-    }
-    float pickupcooldown;
+	}
 
-    public virtual void EnablePhysics () {
-        body.simulated = true;
-        col.enabled = true;
-        ship = null;
-        pickupcooldown = 1.5f;
-    }
+	void Update()
+	{
+		Draw();
 
-    public virtual void DisablePhysics () {
-        body.simulated = false;
-        col.enabled = false;
-    }
+		if (ship == null) return;
 
-    public virtual void Draw () { }
+		if (!CANBEPICKEDUP) pickupcooldown -= Time.deltaTime;
+	}
 
-    bool activated;
-    bool selected;
+	public bool CANBEPICKEDUP
+	{
+		get { return true; }
+	}
 
-    public virtual void Activate () {
-        activated = true;
-    }
+	float pickupcooldown;
 
-    public void Deactivate () {
-        activated = false;
-    }
+	public virtual void EnablePhysics()
+	{
+		body.simulated = true;
+		col.enabled = true;
+		ship = null;
+		pickupcooldown = 1.5f;
+	}
 
-    public void Select () {
-        selected = true;
-    }
+	public virtual void DisablePhysics()
+	{
+		body.simulated = false;
+		col.enabled = false;
+	}
 
-    public void TalkWithShip (Ship ship, PartFixture fixture) {
-        this.ship = ship;
-        this.fixture = fixture;
+	public virtual void Draw()
+	{
+	}
 
-        Vector2 pos = fixture.transform.position;
-        pos -= LOOKDIR * .5f;
-        Vector2 offset = Vector2.zero;
+	bool activated;
+	bool selected;
 
-        if (activated) {
-            offset += LOOKDIR * .25f;
-        }
+	public virtual void Activate()
+	{
+		activated = true;
+	}
 
-        POS = Vector2.Lerp (POS, pos + offset, .35f);
-        ROT = Mathf.LerpAngle (ROT, fixture.transform.eulerAngles.z, .35f);
-        selected = false;
-    }
+	public void Deactivate()
+	{
+		activated = false;
+	}
 
-    public virtual void AssignButton (string newControlName) {
+	public void Select()
+	{
+		selected = true;
+	}
 
-        button = newControlName;
-    }
+	public void TalkWithShip(Ship ship, PartFixture fixture)
+	{
+		this.ship = ship;
+		this.fixture = fixture;
 
-    void OnCollisionEnter2D (Collision2D col) {
-        // Ship s = col.collider.gameObject.GetComponent<Ship> ();
-        // if (s != null) {
-        // GET PICKED BACK UP AGAIN !! 
-        // Destroy (gameObject);
-        // VOICE.Say (voice.pickUp);
-        // s.PickUpPartFromSpace (this);       
-        // }
-    }
+		Vector2 pos = fixture.transform.position;
+		pos -= LOOKDIR * .5f;
+		Vector2 offset = Vector2.zero;
 
-    public void ShowBubble () {
-        SpeechBubble.SetTrigger ("Show");
-        Generator.GenerateAlien ();
+		if (activated)
+		{
+			offset += LOOKDIR * .25f;
+		}
 
-    }
+		POS = Vector2.Lerp(POS, pos + offset, .35f);
+		ROT = Mathf.LerpAngle(ROT, fixture.transform.eulerAngles.z, .35f);
+		selected = false;
+	}
 
-    List<EffectBase> effects = new List<EffectBase> ();
-    protected void ShowEffects () {
-        foreach (EffectBase e in effects) {
-            e.Show ();
-        }
-    }
+	public virtual void AssignButton(string newControlName)
+	{
+		button = newControlName;
+	}
+
+	public void ShowBubble()
+	{
+		SpeechBubble.SetTrigger("Show");
+		Generator.GenerateAlien();
+	}
+
+	List<EffectBase> effects = new List<EffectBase>();
+
+	protected void ShowEffects()
+	{
+		foreach (EffectBase e in effects)
+		{
+			e.Show();
+		}
+	}
 }

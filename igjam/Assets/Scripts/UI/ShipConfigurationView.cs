@@ -32,12 +32,23 @@ public class ShipConfigurationView : MonoBehaviour
 		_signalBus.Subscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
 		DeactivateUI();
 		_state = ConfigurationState.SelectControlSlot;
+	}
+
+	private void OnDestroy()
+	{
+		if (_signalBus != null)
+		{
+			_signalBus.TryUnsubscribe<SystemSignal.GameMode.ConfigureShip.Activate>(ActivateUI);
+			_signalBus.TryUnsubscribe<SystemSignal.GameMode.ConfigureShip.Deactivate>(DeactivateUI);
+		}
 
 	}
 
 	private void DeactivateUI()
 	{
 		this.enabled = false;
+		_signalBus.TryUnsubscribe<InputSignal.LeftButton>(SelectSlotForLeft);
+		_signalBus.TryUnsubscribe<InputSignal.RightButton>(SelectSlotForRight);
 		_cycleAliens = false;
 		_cycleSlots = false;
 		StopAllCoroutines();
@@ -46,7 +57,10 @@ public class ShipConfigurationView : MonoBehaviour
 	private void ActivateUI()
 	{
 		this.enabled = true;
+		_signalBus.Subscribe<InputSignal.LeftButton>(SelectSlotForLeft);
+		_signalBus.Subscribe<InputSignal.RightButton>(SelectSlotForRight);
 		StartSelectSlots();	
+		
 	}
 
 
@@ -73,37 +87,34 @@ public class ShipConfigurationView : MonoBehaviour
 		}
 	}
 
-	void Update()
-	{	 
-		if (Input.GetButtonUp("A"))
+	private void SelectSlotForRight()
+	{
+		if (!gameObject.activeSelf) return;
+		if (_state == ConfigurationState.SelectControlSlot)
 		{
-			if (_state == ConfigurationState.SelectControlSlot)
-			{
-				StartSelectAliens();
-			}
-			else
-			{
-				AvailableShipParts.ActivateSelectedSlot();
-				_signalBus.Fire (new SystemSignal.Ship.ControlUpdated (ShipControls.CurrentSlotId, "A"));
-				StartSelectSlots();
-			}
-			
+			StartSelectAliens();
 		}
-		if (Input.GetButtonUp("B"))
+		else
 		{
-			if (_state == ConfigurationState.SelectControlSlot)
-			{
-				StartSelectAliens();
-			}
-			else
-			{
-				AvailableShipParts.ActivateSelectedSlot();
-				_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "B"));
-				StartSelectSlots();
-			}
+			AvailableShipParts.ActivateSelectedSlot();
+			_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "B"));
+			StartSelectSlots();
 		}
-		
-		
+	}
+
+	private void SelectSlotForLeft()
+	{
+		if (!gameObject.activeSelf) return;
+		if (_state == ConfigurationState.SelectControlSlot)
+		{
+			StartSelectAliens();
+		}
+		else
+		{
+			AvailableShipParts.ActivateSelectedSlot();
+			_signalBus.Fire(new SystemSignal.Ship.ControlUpdated(ShipControls.CurrentSlotId, "A"));
+			StartSelectSlots();
+		}
 	}
 
 	private void StartSelectAliens()
