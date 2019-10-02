@@ -22,6 +22,11 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Activate>();
 		Container.DeclareSignal<SystemSignal.GameMode.FlyMode.Deactivate>();
 
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.FullConfigured>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureMode>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureLeft>();
+		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureRight>();
+		
 		Container.DeclareSignal <SystemSignal.Ship.ConfigureControls>();
 		Container.DeclareSignal<SystemSignal.Ship.ConfigureSlots>();
 
@@ -30,6 +35,7 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<InputSignal.RightButton>();
 		Container.DeclareSignal<InputSignal.UnbufferedLeftButton>();
 		Container.DeclareSignal<InputSignal.UnbufferedRightButton>();
+		
 
 
 	}

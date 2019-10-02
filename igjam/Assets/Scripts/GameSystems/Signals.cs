@@ -110,6 +110,25 @@ public class SystemSignal
 
 		}
 		
+		public class ConfigureInput
+		{
+			public class ConfigureMode
+			{
+			}
+
+			public class ConfigureLeft
+			{
+			}
+			
+			public class ConfigureRight
+			{
+			}
+			
+			public class FullConfigured
+			{
+			}
+		}
+		
 		
 	}
 
