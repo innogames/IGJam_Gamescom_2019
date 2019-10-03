@@ -137,5 +137,8 @@ public class SystemSignal
 	}
 
 
+	public class RestartGame
+	{
+	}
 }
 

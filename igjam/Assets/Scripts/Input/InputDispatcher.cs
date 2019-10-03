@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class InputDispatcher : ITickable
@@ -24,6 +25,7 @@ public class InputDispatcher : ITickable
 	private KeyCode _modeSwitchKey;
 	private KeyCode _leftKey;
 	private KeyCode _rightKey;
+	private float _modeDown;
 
 	public InputDispatcher(SignalBus signalBus)
 	{
@@ -159,7 +161,24 @@ public class InputDispatcher : ITickable
 		{
 			return false;
 		}
-		return Input.GetKeyUp(_modeSwitchKey);
+
+		if (Input.GetKey(_modeSwitchKey))
+		{
+			_modeDown += Time.deltaTime;
+			if (_modeDown > 3)
+			{
+				_modeDown = 0;
+				_signalBus.Fire<SystemSignal.RestartGame>();
+			}
+		}
+
+		var keyUp = Input.GetKeyUp(_modeSwitchKey);
+		if (keyUp)
+		{
+			_modeDown = 0;
+		}
+
+		return keyUp;
 	}
 	
 	private  bool LeftActivated()

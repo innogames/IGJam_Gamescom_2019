@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class RestartGame : MonoBehaviour
 {
-	// Start is called before the first frame update
-	void Start()
+	private SignalBus _signalBus;
+
+	[Inject]
+	public void Init(SignalBus signalBus)
 	{
+		_signalBus = signalBus;
+		_signalBus.Subscribe<SystemSignal.RestartGame>(Restart);
 	}
 
-	// Update is called once per frame
-	void Update()
+	private void Restart()
 	{
-		if (Input.GetButtonUp("Y"))
-		{
-			SceneManager.LoadScene(0);
-		}
+		SceneManager.LoadScene(0);
 	}
 }

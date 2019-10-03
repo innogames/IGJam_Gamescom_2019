@@ -27,6 +27,7 @@ public class ConfigurationInstaller : MonoInstaller
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureLeft>();
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput.ConfigureRight>();
 		Container.DeclareSignal<SystemSignal.GameMode.ConfigureInput>();
+		Container.DeclareSignal<SystemSignal.RestartGame>();
 		
 		
 		Container.DeclareSignal <SystemSignal.Ship.ConfigureControls>();

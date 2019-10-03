@@ -46207,16 +46207,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1612566785716828210, guid: 15f961bf166ee4f199d73126cca03378,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5390004810496820670, guid: 15f961bf166ee4f199d73126cca03378,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15f961bf166ee4f199d73126cca03378, type: 3}
 --- !u!4 &759669613 stripped
@@ -59865,6 +59855,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 6968077219899679844, guid: ed2721569c95e4681be47e9d6b48b5b2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6968077219899679840, guid: ed2721569c95e4681be47e9d6b48b5b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59978,6 +59973,21 @@ PrefabInstance:
       propertyPath: GameControlSwitch
       value: 
       objectReference: {fileID: 1374645116}
+    - target: {fileID: 6968077219899679842, guid: ed2721569c95e4681be47e9d6b48b5b2,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968077219899679842, guid: ed2721569c95e4681be47e9d6b48b5b2,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968077219899679842, guid: ed2721569c95e4681be47e9d6b48b5b2,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed2721569c95e4681be47e9d6b48b5b2, type: 3}
 --- !u!1 &1696042213 stripped
