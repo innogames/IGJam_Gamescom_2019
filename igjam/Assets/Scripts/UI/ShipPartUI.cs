@@ -1,6 +1,4 @@
-﻿using TMPro.EditorUtilities;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using Zenject;
 
 [RequireComponent (typeof (SpriteRenderer))]
